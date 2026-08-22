@@ -1,0 +1,12 @@
+@use "./variables" as vars;
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #000000;
+}
+
+#app {
+  min-height: 100vh;
+}

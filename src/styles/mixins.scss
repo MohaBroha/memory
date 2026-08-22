@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "./variables" as vars;
+
+@mixin respond-to($breakpoint) {
+  @if map.has-key(vars.$breakpoints, $breakpoint) {
+    @media (min-width: map.get(vars.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error 'Unknown breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin container {
+  width: min(100% - 2rem, 90rem);
+  margin-inline: auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
