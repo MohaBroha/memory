@@ -1,5 +1,6 @@
 import { createSettingsElement } from './settings';
 import { showView } from './view';
+import { createLegalNoticeElement } from './legal-notice';
 
 const CONTROLLER_ASSET =
     '/assets/components/home/controller.svg';
@@ -15,6 +16,20 @@ export function createHomeElement(): HTMLElement {
 
     homeElement.id = 'home';
     homeElement.classList.add('home');
+
+    const brandElement = document.createElement('span');
+    brandElement.classList.add('home__brand');
+
+    const brandText = 'Memory';
+
+    [...brandText].forEach((letter, index) => {
+    const letterElement = document.createElement('span');
+
+    letterElement.textContent = letter;
+    letterElement.style.animationDelay = `${index * 0.12}s`;
+
+    brandElement.append(letterElement);
+    });;
 
     const contentElement = document.createElement('div');
 
@@ -32,6 +47,29 @@ export function createHomeElement(): HTMLElement {
 
     const playButton = createPlayButton();
 
+    const footerElement = document.createElement('footer');
+
+    footerElement.classList.add('home__footer');
+
+    const copyrightElement = document.createElement('span');
+    copyrightElement.textContent =
+    '© All rights reserved 2026 Mohamed Brohani';
+
+   const legalLink = document.createElement('button');
+
+legalLink.type = 'button';
+legalLink.classList.add('home__legal-link');
+legalLink.textContent = 'Legal Notice';
+
+legalLink.addEventListener('click', () => {
+    showView(createLegalNoticeElement());
+});
+
+    footerElement.append(
+    copyrightElement,
+    legalLink,
+    );
+ 
     contentElement.append(
         subtitleElement,
         titleElement,
@@ -53,9 +91,10 @@ controllerElement.addEventListener('mouseleave', () => {
 });
 
     homeElement.append(
+        brandElement,
         contentElement,
         controllerElement,
-
+        footerElement,
     );
 
     return homeElement;
