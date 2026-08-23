@@ -81,7 +81,80 @@ export const CARD_ASSETS: Record<Theme, CardAsset[]> = {
     },
   ],
 
-  games: [],
+  games: [
+    {
+        pairId: 'target',
+        asset: '/assets/components/games/cards/target.svg',
+    },
+    {
+        pairId: 'square',
+        asset: '/assets/components/games/cards/square.svg',
+    },
+    {
+        pairId: 'triangle',
+        asset: '/assets/components/games/cards/triangle.svg',
+    },
+    {
+        pairId: 'maze',
+        asset: '/assets/components/games/cards/maze.svg',
+    },
+    {
+        pairId: 'minecraft',
+        asset: '/assets/components/games/cards/minecraft.svg',
+    },
+    {
+        pairId: 'mushroom',
+        asset: '/assets/components/games/cards/mushroom.svg',
+    },
+    {
+        pairId: 'dice',
+        asset: '/assets/components/games/cards/dice.svg',
+    },
+    {
+        pairId: 'banana',
+        asset: '/assets/components/games/cards/banana.svg',
+    },
+    {
+        pairId: 'controller',
+        asset: '/assets/components/games/cards/controller.svg',
+    },
+    {
+        pairId: 'ghosts',
+        asset: '/assets/components/games/cards/ghosts.svg',
+    },
+    {
+        pairId: 'star',
+        asset: '/assets/components/games/cards/star.svg',
+    },
+    {
+        pairId: 'terminal',
+        asset: '/assets/components/games/cards/terminal.svg',
+    },
+    {
+        pairId: 'level-up',
+        asset: '/assets/components/games/cards/level-up.svg',
+    },
+    {
+        pairId: 'pacman',
+        asset: '/assets/components/games/cards/pacman.svg',
+    },
+    {
+        pairId: 'gameboy',
+        asset: '/assets/components/games/cards/gameboy.svg',
+    },
+    {
+        pairId: 'puzzle',
+        asset: '/assets/components/games/cards/puzzle.svg',
+    },
+    {
+        pairId: 'playing-card',
+        asset: '/assets/components/games/cards/playing-card.svg',
+    },
+    {
+        pairId: 'play-button',
+        asset: '/assets/components/games/cards/play-button.svg',
+    },
+],
 
   "da-project": [],
 
