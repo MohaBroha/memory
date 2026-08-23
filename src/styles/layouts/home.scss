@@ -1,0 +1,88 @@
+.home {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2c2e2e;
+    color: #ffffff;
+}
+
+.home__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.home__subtitle {
+    margin: 0;
+    font-family: 'Almarai', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.home__title {
+    margin: 0;
+    max-width: 100%;
+    font-family: 'Red Rose', serif;
+    font-size: clamp(3.5rem, 9vw, 8.75rem);
+    font-weight: 700;
+    line-height: 1;
+    white-space: normal;
+}
+
+.home__play {
+    width: 151px;
+    height: 90px;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    background-image: url('/assets/components/home/play-default.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.home__play.is-hover {
+    background-image: url('/assets/components/home/play-hover.svg');
+}
+
+.home__controller {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: min(38vw, 314px);
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    .home__title {
+        white-space: normal;
+    }
+
+    .home__content {
+        width: 100%;
+    }
+
+    .home__controller {
+        width: min(65vw, 300px);
+    }
+}
+
+@media (min-width: 1000px) {
+    .home__play {
+        width: 220px;
+        height: 87px;
+        margin-top: 2rem;
+
+    }
+}
