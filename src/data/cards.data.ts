@@ -156,7 +156,80 @@ export const CARD_ASSETS: Record<Theme, CardAsset[]> = {
     },
 ],
 
-  "da-project": [],
+ "da-project": [
+    {
+        pairId: 'ramen',
+        asset: '/assets/components/da-project/cards/ramen.svg',
+    },
+    {
+        pairId: 'noodles',
+        asset: '/assets/components/da-project/cards/noodles.svg',
+    },
+    {
+        pairId: 'eggs',
+        asset: '/assets/components/da-project/cards/eggs.svg',
+    },
+    {
+        pairId: 'sakura',
+        asset: '/assets/components/da-project/cards/sakura.svg',
+    },
+    {
+        pairId: 'javascript',
+        asset: '/assets/components/da-project/cards/javascript-1.svg',
+    },
+    {
+        pairId: 'chef',
+        asset: '/assets/components/da-project/cards/chef.svg',
+    },
+    {
+        pairId: 'leaf',
+        asset: '/assets/components/da-project/cards/leaf.svg',
+    },
+    {
+        pairId: 'basket',
+        asset: '/assets/components/da-project/cards/basket.svg',
+    },
+    {
+        pairId: 'pokeball',
+        asset: '/assets/components/da-project/cards/pokeball.svg',
+    },
+    {
+        pairId: 'calculator',
+        asset: '/assets/components/da-project/cards/calculator.svg',
+    },
+    {
+        pairId: 'smile',
+        asset: '/assets/components/da-project/cards/smile.svg',
+    },
+    {
+        pairId: 'arrow',
+        asset: '/assets/components/da-project/cards/arrow.svg',
+    },
+    {
+        pairId: 'arcade',
+        asset: '/assets/components/da-project/cards/arcade.svg',
+    },
+    {
+        pairId: 'crown',
+        asset: '/assets/components/da-project/cards/crown.svg',
+    },
+    {
+        pairId: 'broccoli',
+        asset: '/assets/components/da-project/cards/broccoli.svg',
+    },
+    {
+        pairId: 'bubbles',
+        asset: '/assets/components/da-project/cards/bubbles.svg',
+    },
+    {
+        pairId: 'wave',
+        asset: '/assets/components/da-project/cards/wave.svg',
+    },
+    {
+        pairId: 'coins',
+        asset: '/assets/components/da-project/cards/coins.svg',
+    },
+],
 
   food: [],
 };
