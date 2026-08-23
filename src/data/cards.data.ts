@@ -231,5 +231,78 @@ export const CARD_ASSETS: Record<Theme, CardAsset[]> = {
     },
 ],
 
-  food: [],
+food: [
+    {
+        pairId: 'fries',
+        asset: '/assets/components/food/cards/fries.svg',
+    },
+    {
+        pairId: 'pizza',
+        asset: '/assets/components/food/cards/pizza.svg',
+    },
+    {
+        pairId: 'burger',
+        asset: '/assets/components/food/cards/burger.svg',
+    },
+    {
+        pairId: 'donut',
+        asset: '/assets/components/food/cards/donut.svg',
+    },
+    {
+        pairId: 'sushi',
+        asset: '/assets/components/food/cards/sushi.svg',
+    },
+    {
+        pairId: 'candy',
+        asset: '/assets/components/food/cards/candy.svg',
+    },
+    {
+        pairId: 'hamburger',
+        asset: '/assets/components/food/cards/hamburger.svg',
+    },
+    {
+        pairId: 'pretzel',
+        asset: '/assets/components/food/cards/pretzel.svg',
+    },
+    {
+        pairId: 'cupcake',
+        asset: '/assets/components/food/cards/cupcake.svg',
+    },
+    {
+        pairId: 'pudding',
+        asset: '/assets/components/food/cards/pudding.svg',
+    },
+    {
+        pairId: 'flan',
+        asset: '/assets/components/food/cards/flan.svg',
+    },
+    {
+        pairId: 'chocolate',
+        asset: '/assets/components/food/cards/chocolate.svg',
+    },
+    {
+        pairId: 'popcorn',
+        asset: '/assets/components/food/cards/popcorn.svg',
+    },
+    {
+        pairId: 'fries-box',
+        asset: '/assets/components/food/cards/fries-box.svg',
+    },
+    {
+        pairId: 'taco',
+        asset: '/assets/components/food/cards/taco.svg',
+    },
+    {
+        pairId: 'ice-cream',
+        asset: '/assets/components/food/cards/ice-cream.svg',
+    },
+    {
+        pairId: 'salad',
+        asset: '/assets/components/food/cards/salad.svg',
+    },
+    {
+        pairId: 'macarons',
+        asset: '/assets/components/food/cards/macarons.svg',
+    },
+],
 };
