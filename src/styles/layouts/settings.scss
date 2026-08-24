@@ -291,7 +291,7 @@
     grid-column: 2;
     grid-row: 2 / span 2;
     width: 100%;
-    max-width: 600px;
+    max-width: 690px;
     height: auto;
     margin: 0;
     justify-self: start;
@@ -398,29 +398,38 @@
     max-width: 750px;
   }
 }
-
 @media (min-width: 68.75rem) and (max-width: 81.25rem) {
   .settings__summary {
     width: 100%;
     max-width: 100%;
     padding: 0.75rem 1rem;
+    box-sizing: border-box;
+
+    justify-content: space-between;
+    gap: 0.5rem;
+    overflow: hidden;
   }
+
   .settings__summary-item {
     font-size: 1.15rem;
   }
+
   .settings__summary-separator {
     width: 24px;
     height: 58px;
     flex: 0 0 24px;
   }
+
   .settings__summary .settings__start {
     width: 130px;
     min-width: 130px;
     height: 52px;
     flex: 0 0 130px;
   }
+
   .settings__summary.is-open {
     width: 100%;
     max-width: 100%;
+    gap: 0.75rem;
   }
 }
