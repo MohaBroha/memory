@@ -89,31 +89,26 @@ export function resolveTurn(gameState: GameState): GameState {
   };
 }
 
-export function createGameController(
-    settings: GameSettings,
-): {
-    getState: () => GameState;
-    selectCard: (cardId: string) => GameState;
-    resolveTurn: () => GameState;
+export function createGameController(settings: GameSettings): {
+  getState: () => GameState;
+  selectCard: (cardId: string) => GameState;
+  resolveTurn: () => GameState;
 } {
-    let gameState = startGame(settings);
+  let gameState = startGame(settings);
 
-    return {
-        getState: () => gameState,
+  return {
+    getState: () => gameState,
 
-        selectCard: (cardId: string): GameState => {
-            gameState = selectGameCard(
-                gameState,
-                cardId,
-            );
+    selectCard: (cardId: string): GameState => {
+      gameState = selectGameCard(gameState, cardId);
 
-            return gameState;
-        },
+      return gameState;
+    },
 
-        resolveTurn: (): GameState => {
-            gameState = resolveTurn(gameState);
+    resolveTurn: (): GameState => {
+      gameState = resolveTurn(gameState);
 
-            return gameState;
-        },
-    };
+      return gameState;
+    },
+  };
 }

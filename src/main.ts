@@ -1,12 +1,12 @@
-import './styles/style.scss';
+import "./styles/style.scss";
 
-import { createHomeElement } from './ui/home';
-import { showView } from './ui/view';
+import { createHomeElement } from "./ui/home";
+import { showView } from "./ui/view";
 
-const app = document.getElementById('app');
+const app = document.getElementById("app");
 
 if (!app) {
-    throw new Error('App container not found.');
+  throw new Error("App container not found.");
 }
 
 showView(createHomeElement());

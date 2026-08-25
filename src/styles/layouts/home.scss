@@ -103,7 +103,7 @@
   border: 0;
   background: transparent;
   cursor: pointer;
-  animation: controller-neon 2.4s ease-in-out infinite;
+  animation: controller-neon 3.9s ease-in-out infinite;
 }
 
 .home__controller img {
@@ -115,26 +115,20 @@
 @keyframes controller-neon {
   0%,
   100% {
-    filter:
-      brightness(0.45)
-      drop-shadow(0 0 0.2rem rgba(240, 234, 110, 0.35))
+    filter: brightness(0.45) drop-shadow(0 0 0.2rem rgba(240, 234, 110, 0.35))
       drop-shadow(0 0 0.6rem rgba(240, 234, 110, 0.2));
   }
   35% {
-    filter:
-      brightness(0.7)
-      drop-shadow(0 0 0.3rem rgba(240, 234, 110, 0.75))
+    filter: brightness(0.7) drop-shadow(0 0 0.3rem rgba(240, 234, 110, 0.75))
       drop-shadow(0 0 0.8rem rgba(240, 234, 110, 0.5))
       drop-shadow(0 0 1.5rem rgba(240, 234, 110, 0.3));
   }
   50% {
-    filter:
-      brightness(1.1)
-      drop-shadow(0 0 0.25rem rgb(6, 26, 92))
+    filter: brightness(1.1) drop-shadow(0 0 0.25rem rgb(6, 26, 92))
       drop-shadow(0 0 0.6rem rgba(7, 27, 94, 0.95))
       drop-shadow(0 0 1.2rem rgba(4, 50, 110, 0.75))
       drop-shadow(0 0 2.2rem rgba(8, 48, 96, 0.5))
-      drop-shadow(0 0 3.5rem rgba(0, 170, 255, 0.25));
+      drop-shadow(0 0 3.5rem rgba(6, 10, 116, 0.25));
   }
 }
 

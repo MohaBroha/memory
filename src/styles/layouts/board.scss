@@ -1,0 +1,159 @@
+.game {
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: #2c2e2e;
+  color: #f2f4f5;
+  font-family: "Almarai", sans-serif;
+}
+
+.game__header {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 1.25rem;
+  width: min(100%, 80rem);
+  margin: 0 auto 2rem;
+}
+
+.game__score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.game__score-player {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.game__score-icon {
+  width: clamp(1.25rem, 2vw, 1.6rem);
+  height: clamp(1.25rem, 2vw, 1.6rem);
+  object-fit: contain;
+}
+
+.game__current-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  gap: 0.45rem;
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  white-space: nowrap;
+}
+
+.game__current-player-icon {
+  width: clamp(1.3rem, 2vw, 1.6rem);
+  height: clamp(1.3rem, 2vw, 1.6rem);
+  object-fit: contain;
+}
+
+.game__exit {
+  justify-self: center;
+  width: clamp(9rem, 12vw, 10.5rem);
+  aspect-ratio: 3 / 1;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  background-image: url("/assets/components/coding-vibes/buttons/exit-button/default.exit.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.game__exit:hover {
+  background-image: url("/assets/components/coding-vibes/buttons/exit-button/hover.exit.svg");
+}
+
+.game__score-player--blue {
+  color: #29aef5;
+}
+
+.game__score-player--orange {
+  color: #f58a27;
+}
+
+.game__exit-icon {
+  display: block;
+}
+
+.field {
+  display: grid;
+  gap: clamp(0.25rem, 1vw, 0.35rem);
+  width: min(100%, 70rem);
+  margin: 0 auto;
+}
+
+.field[data-card-count="16"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.field[data-card-count="24"],
+.field[data-card-count="36"] {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@media (min-width: 48rem) {
+  .game__header {
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(2rem, 5vw, 6rem);
+    width: min(100%, 80rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .game__score {
+    justify-content: flex-start;
+  }
+
+  .game__current-player {
+    justify-self: center;
+  }
+
+  .game__exit {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 64rem) {
+  .game {
+    padding: 2rem;
+  }
+
+  .game__header {
+    width: min(100%, 70rem);
+    gap: 3rem;
+  }
+
+  .game__score-player {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+  }
+
+  .game__score-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .game__current-player {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+  }
+
+  .game__current-player-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .game__exit {
+    width: 9.5rem;
+  }
+
+  .field {
+    gap: 0.35rem;
+    width: min(100%, 70rem);
+  }
+}

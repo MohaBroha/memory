@@ -1,52 +1,110 @@
 .card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 4 / 5;
+  border: 0;
+  border-radius: 0.75rem;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1000px;
+  overflow: hidden;
+
+  &__inner {
     position: relative;
-    width: 160px;
-    height: 200px;
-    border: none;
-    padding: 0;
-    background: transparent;
-    cursor: pointer;
-    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition:
+      transform 0.45s ease,
+      filter 0.45s ease;
+    border-radius: inherit;
+  }
 
-    &__inner {
-        position: relative;
+  &__face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 80%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: inherit;
+    overflow: hidden;
+
+    &--front {
+      transform: rotateY(0deg);
+
+      img {
+        display: block;
         width: 100%;
         height: 100%;
-        transform-style: preserve-3d;
-        transition: transform 0.4s ease;
+        object-fit: fill;
+      }
     }
 
-    &__face {
-        position: absolute;
-        inset: 0;
+    &--back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18%;
+      box-sizing: border-box;
+      background-color: #ffffff;
+      transform: rotateY(180deg);
+
+      img {
+        display: block;
         width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
+        height: 80%;
+        object-fit: contain;
+      }
+    }
+  }
 
-        img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        &--front {
-            transform: rotateY(0deg);
-        }
-
-        &--back {
-            transform: rotateY(180deg);
-        }
+  &.is-flipped {
+    .card__inner {
+      transform: rotateY(180deg);
     }
 
-    &.is-flipped {
-        .card__inner {
-            transform: rotateY(180deg);
-        }
-    }
+    animation: card-flip-glow 0.45s ease;
+  }
 
-    &.is-matched {
-        cursor: default;
-    }
+  &.is-matched {
+    cursor: default;
+  }
+
+  &.match-effect {
+    animation: card-match 0.5s ease;
+  }
+}
+
+@keyframes card-flip-glow {
+  0% {
+    filter: brightness(1);
+  }
+
+  45% {
+    filter: brightness(1.3) drop-shadow(0 0 0.7rem rgba(240, 234, 110, 0.7));
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes card-match {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  45% {
+    transform: scale(1.08);
+    filter: brightness(1.25) drop-shadow(0 0 0.8rem rgba(240, 234, 110, 0.8));
+  }
+
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
 }

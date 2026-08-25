@@ -298,17 +298,17 @@
     margin-top: -5.2rem;
   }
 
- .settings__theme-preview {
-  grid-column: 2;
-  grid-row: 2 / span 2;
-  width: 100%;
-  max-width: 680px;
-  height: auto;
-  margin: 0;
-  justify-self: center;
-  align-self: start;
-  transform: translateX(0.2rem);
-}
+  .settings__theme-preview {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    margin: 0;
+    justify-self: center;
+    align-self: start;
+    transform: translateX(0.2rem);
+  }
 
   .settings__summary-item {
     display: block;
@@ -318,32 +318,32 @@
     display: block;
   }
 
- .settings__summary {
-  grid-column: 2;
-  grid-row: 4;
-  width: min(100%, 690px);
-  min-width: 0;
-  box-sizing: border-box;
-  margin: 2rem 0 0;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 2rem;
-  background-color: #363a3b;
-  transition:
-    width 0.3s ease,
-    gap 0.3s ease,
-    transform 0.3s ease;
-  justify-self: center;
-}
+  .settings__summary {
+    grid-column: 2;
+    grid-row: 4;
+    width: min(100%, 690px);
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 2rem 0 0;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2rem;
+    background-color: #363a3b;
+    transition:
+      width 0.3s ease,
+      gap 0.3s ease,
+      transform 0.3s ease;
+    justify-self: center;
+  }
 
-.settings__summary.is-open {
-  width: min(100%, 830px);
-  gap: 1.5rem;
-  justify-self: center;
-  transform: translateX(1rem);
-}
+  .settings__summary.is-open {
+    width: min(100%, 830px);
+    gap: 1.5rem;
+    justify-self: center;
+    transform: translateX(1rem);
+  }
 
   .settings__summary-item {
     min-width: 0;
@@ -429,20 +429,20 @@
     font-size: 1.5rem;
   }
 
-.settings__theme-preview {
-  max-width: 750px;
-  justify-self: center;
-  transform: translateX(2.6rem);
-}
+  .settings__theme-preview {
+    max-width: 750px;
+    justify-self: center;
+    transform: translateX(2.6rem);
+  }
 
-.settings__summary {
-  width: min(100%, 750px);
-  justify-self: end;
-}
+  .settings__summary {
+    width: min(100%, 750px);
+    justify-self: end;
+  }
 
-.settings__summary.is-open {
-  width: min(100%, 800px);
-  justify-self: center;
-  transform: translateX(3rem);
-}
+  .settings__summary.is-open {
+    width: min(100%, 800px);
+    justify-self: center;
+    transform: translateX(3rem);
+  }
 }

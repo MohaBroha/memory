@@ -4,7 +4,9 @@
 @use "./fonts";
 @use "./typography";
 @use "./base";
-@use './components/card';
-@use './layouts/home';
-@use './layouts/legal-notice';
-@use './layouts/settings';
+@use "./components/card";
+@use "./layouts/home";
+@use "./layouts/legal-notice";
+@use "./layouts/settings";
+@use "./layouts/board.scss";
+@use "./components/exit-confirmation";

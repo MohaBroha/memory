@@ -1,0 +1,80 @@
+.exit-confirmation {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(44, 46, 46, 0.35);
+  &__dialog {
+    width: min(100%, 35rem);
+    padding: clamp(1rem, 3vw, 3rem) clamp(3rem, 3vw, 8rem);
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    text-align: center;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  }
+  &__title {
+    margin: 0 auto;
+    max-width: 34rem;
+    color: #2c2e2e;
+    font-family: "Almarai", sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+  &__back,
+  &__exit {
+    width: clamp(10rem, 24vw, 14rem);
+    aspect-ratio: 148 / 57;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease;
+  }
+  &__exit {
+    order: 2;
+    background-image: url("/assets/components/coding-vibes/buttons/pop-up-button/default.back (2).svg");
+    &:hover {
+      transform: translateY(2px);
+      filter: drop-shadow(0 0 0.04rem rgb(102, 207, 188))
+        drop-shadow(0 0 0.08rem rgb(102, 207, 188));
+    }
+  }
+  &__back {
+    order: 1;
+    background-image: url("/assets/components/coding-vibes/buttons/pop-up-button/hover.default.svg");
+    &:hover {
+      background-image: url("/assets/components/coding-vibes/buttons/pop-up-button/hover.back.svg");
+      transform: translateY(-2px);
+    }
+  }
+  &__back:focus-visible,
+  &__exit:focus-visible {
+    outline: 2px solid #29aef5;
+    outline-offset: 0.25rem;
+  }
+}
+@media (max-width: 40rem) {
+  .exit-confirmation__actions {
+    flex-direction: column;
+  }
+  .exit-confirmation__back,
+  .exit-confirmation__exit {
+    width: min(100%, 14rem);
+  }
+}

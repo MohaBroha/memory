@@ -63,25 +63,25 @@ export function createHomeElement(): HTMLElement {
 
   footerElement.append(copyrightElement, legalLink);
 
-const headingElement = document.createElement("div");
-headingElement.classList.add("home__heading");
-headingElement.append(subtitleElement, titleElement);
-contentElement.append(headingElement, playButton);
+  const headingElement = document.createElement("div");
+  headingElement.classList.add("home__heading");
+  headingElement.append(subtitleElement, titleElement);
+  contentElement.append(headingElement, playButton);
 
- const controllerElement = document.createElement("button");
-controllerElement.type = "button";
-controllerElement.classList.add("home__controller");
-controllerElement.setAttribute("aria-label", "Open game settings");
+  const controllerElement = document.createElement("button");
+  controllerElement.type = "button";
+  controllerElement.classList.add("home__controller");
+  controllerElement.setAttribute("aria-label", "Open game settings");
 
-const controllerImage = document.createElement("img");
-controllerImage.src = CONTROLLER_ASSET;
-controllerImage.alt = "";
+  const controllerImage = document.createElement("img");
+  controllerImage.src = CONTROLLER_ASSET;
+  controllerImage.alt = "";
 
-controllerElement.append(controllerImage);
+  controllerElement.append(controllerImage);
 
-controllerElement.addEventListener("click", () => {
-  showView(createSettingsElement());
-});
+  controllerElement.addEventListener("click", () => {
+    showView(createSettingsElement());
+  });
 
   controllerElement.addEventListener("mouseenter", () => {
     homeElement.classList.add("controller-active");
