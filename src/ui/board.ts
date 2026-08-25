@@ -4,6 +4,7 @@ import { createCardElement } from "./card";
 import { createExitConfirmationElement } from "./exit-confirmation";
 import { createHomeElement } from "./home";
 import { showView } from "./view";
+import { THEME_ASSETS } from "../data/theme-assets.data";
 import { createGameOverElement } from "./game-over";
 
 export function createBoardElement(
@@ -43,6 +44,7 @@ function createGameHeader(
   gameState: GameState,
   gameElement: HTMLElement,
 ): HTMLElement {
+  const themeAssets = THEME_ASSETS[gameState.settings.theme];
   const headerElement = document.createElement("header");
 
   headerElement.classList.add("game__header");
@@ -57,7 +59,7 @@ function createGameHeader(
     "game__score-player",
     "game__score-player--blue",
   );
-  playerOneIcon.src = "/assets/components/coding-vibes/calculator/blue.svg";
+  playerOneIcon.src = themeAssets.calculator.blue;
   playerOneIcon.alt = "";
   playerOneIcon.classList.add("game__score-icon");
   playerOneElement.append(
@@ -70,7 +72,7 @@ function createGameHeader(
     "game__score-player",
     "game__score-player--orange",
   );
-  playerTwoIcon.src = "/assets/components/coding-vibes/calculator/orange.svg";
+  playerTwoIcon.src = themeAssets.calculator.orange;
   playerTwoIcon.alt = "";
   playerTwoIcon.classList.add("game__score-icon");
   playerTwoElement.append(
@@ -88,8 +90,8 @@ function createGameHeader(
 
   currentPlayerIcon.src =
     gameState.currentPlayer === 1
-      ? "/assets/components/coding-vibes/calculator/blue.svg"
-      : "/assets/components/coding-vibes/calculator/orange.svg";
+      ? themeAssets.calculator.blue
+      : themeAssets.calculator.orange;
 
   currentPlayerIcon.alt = "";
   currentPlayerIcon.classList.add("game__current-player-icon");
@@ -100,6 +102,14 @@ function createGameHeader(
 
   exitButton.type = "button";
   exitButton.classList.add("game__exit");
+  exitButton.style.setProperty(
+    "--exit-button-default",
+    `url("${themeAssets.exitButton.default}")`,
+  );
+  exitButton.style.setProperty(
+    "--exit-button-hover",
+    `url("${themeAssets.exitButton.hover}")`,
+  );
   exitButton.addEventListener("click", () => {
     const confirmationElement = createExitConfirmationElement(
       () => {
@@ -108,6 +118,7 @@ function createGameHeader(
       () => {
         showView(createHomeElement());
       },
+      gameState.settings.theme,
     );
 
     gameElement.appendChild(confirmationElement);
@@ -127,7 +138,7 @@ function renderBoard(
   fieldElement.replaceChildren();
 
   gameState.cards.forEach((card) => {
-    const cardElement = createCardElement(card);
+    const cardElement = createCardElement(card, gameState.settings.theme);
 
     cardElement.addEventListener("click", () => {
       const currentState = gameController.getState();

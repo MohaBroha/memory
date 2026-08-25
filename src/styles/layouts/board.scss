@@ -60,7 +60,7 @@
   border: 0;
   padding: 0;
   background-color: transparent;
-  background-image: url("/assets/components/coding-vibes/buttons/exit-button/default.exit.svg");
+  background-image: var(--exit-button-default);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -68,7 +68,7 @@
 }
 
 .game__exit:hover {
-  background-image: url("/assets/components/coding-vibes/buttons/exit-button/hover.exit.svg");
+  background-image: var(--exit-button-hover);
 }
 
 .game__score-player--blue {

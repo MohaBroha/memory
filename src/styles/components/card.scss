@@ -73,6 +73,10 @@
     cursor: default;
   }
 
+  &.card--da-project .card__face--front img {
+    object-fit: cover;
+  }
+
   &.match-effect {
     animation: card-match 0.5s ease;
   }
