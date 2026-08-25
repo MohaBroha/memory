@@ -3,62 +3,53 @@
   color: #f2f4f5;
   font-family: "Red Rose", sans-serif;
 
-      padding: 2rem;
-
-
   .game__header {
     width: min(100%, 1420px);
     grid-template-columns: 1fr auto 1fr;
   }
 
   .game__score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: min(100%, 292px);
-    justify-self: start;
     height: 62px;
     padding: 17px 20px;
     box-sizing: border-box;
     gap: 20px;
     background-color: #3f5552;
+    justify-self: start;
   }
 
   .game__score-player {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: clamp(1rem, 1.5vw, 1.35rem);
-  font-weight: 700;
-  white-space: nowrap;
-  
-}
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.4rem;
+    white-space: nowrap;
+    font-family: "Red Rose", sans-serif;
+    font-size: 22px;
 
-.game__current-player-icon {
-  width: 2rem;
-  height: 2rem;
-} 
+  }
 
   .game__score-icon {
-  width: clamp(1.25rem, 2vw, 1.6rem);
-  height: clamp(1.25rem, 2vw, 1.6rem);
-  object-fit: contain;
-}
-
-  .game__score {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(1rem, 2.5vw, 2rem);
-}
-
-  .game__score-player {
-    font-family: "Red Rose", sans-serif;
+    width: clamp(1.25rem, 2vw, 2rem);
+    height: clamp(1.25rem, 2vw, 2rem);
+    object-fit: contain;
   }
 
   .game__current-player {
-    font-family: "Red Rose", sans-serif;
     justify-self: center;
+    font-family: "Red Rose", sans-serif;
     font-size: 32px;
-  font-weight: 700;
-  line-height: 100%;
+    font-weight: 700;
+    line-height: 100%;
+  }
+
+  .game__current-player-icon {
+    width: 2rem;
+    height: 2rem;
   }
 
   .game__score-player--blue {

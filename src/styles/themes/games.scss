@@ -1,6 +1,7 @@
 .game[data-theme="games"] {
   background-color: #294f60;
   font-family: "Orbitron", sans-serif;
+  font-weight: 700;
 
   .game__header {
     width: min(100%, 1412px);
@@ -10,16 +11,12 @@
     border-radius: 24px;
   }
 
-  .game__score-player,
-  .game__current-player {
-    font-family: "Orbitron", sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: 0;
-  }
-
   .game__score {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
     min-width: 182px;
     height: 54px;
     padding: 0 16px;
@@ -30,7 +27,20 @@
   }
 
   .game__score-player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
     gap: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .game__score-player--blue {
+    color: #29aef5;
+  }
+
+  .game__score-player--orange {
+    color: #f58a27;
   }
 
   .game__score-points {
@@ -42,6 +52,11 @@
   }
 
   .game__current-player {
+    font-family: "Orbitron", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 100%;
+    color: #ffffff;
     text-align: right;
   }
 

@@ -8,13 +8,26 @@
   padding: 1rem;
   background: rgba(44, 46, 46, 0.35);
   &__dialog {
-    width: min(100%, 35rem);
+    width: min(100%, 45rem);
     padding: clamp(1rem, 3vw, 3rem) clamp(3rem, 3vw, 8rem);
     background-color: #ffffff;
     border-radius: 1.5rem;
     text-align: center;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+    animation: popup-slide-in 0.45s ease-out both;
   }
+
+  @keyframes popup-slide-in {
+  from {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
   &__title {
     margin: 0 auto;
@@ -36,7 +49,8 @@
 
   &__back,
   &__exit {
-    width: clamp(10rem, 24vw, 14rem);
+    width: clamp(12rem, 24vw, 20rem);
+    background-size: 100% 60%;
     aspect-ratio: 148 / 57;
     border: 1px solid transparent;
     box-sizing: border-box;
@@ -84,6 +98,38 @@
   }
   .exit-confirmation__back,
   .exit-confirmation__exit {
-    width: min(100%, 14rem);
+    width: min(100%, 17rem);
   }
+}
+
+  .exit-confirmation[data-theme="coding-vibes"] {
+  .exit-confirmation__title {
+    color:  #2c2e2e;
+    font-family: "Red Rose", sans-serif;
+  }
+}
+
+.exit-confirmation[data-theme="games"] {
+  .exit-confirmation__title {
+    color: #294f60;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+  }
+}
+
+.exit-confirmation[data-theme="da-project"] {
+  .exit-confirmation__title {
+       color: #141415;
+    font-family: "Figtree", sans-serif;
+    font-weight: 700;
+  }
+}
+
+.exit-confirmation[data-theme="food"] {
+  .exit-confirmation__title {
+    color: #a6530c;
+    font-family: "Klee One", sans-serif;
+    font-weight: 600;
+  }
+  
 }

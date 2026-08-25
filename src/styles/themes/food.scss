@@ -1,0 +1,74 @@
+.game[data-theme="food"] {
+  background-color: #faf3eb;
+  color: #9b4d0b;
+  font-family: "Figtree", sans-serif;
+
+  .game__header {
+    width: min(100%, 1412px);
+    min-height: 102px;
+    padding: 24px;
+    background-color: #f0e5d9;
+    border-radius: 24px;
+  }
+
+  .game__score {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    min-width: 182px;
+    height: 54px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    gap: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+
+  .game__score-player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .game__score-player--blue {
+    color: #087fc5;
+  }
+
+  .game__score-player--orange {
+    color: #ea6900;
+  }
+
+  .game__score-points {
+    font-family: "Klee One", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+
+  .game__current-player {
+    color: #a6530c;
+    font-family: "Klee One", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: right;
+  }
+
+  .game__current-player-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .game__exit {
+    width: 195px;
+    height: 54px;
+    aspect-ratio: auto;
+  }
+}

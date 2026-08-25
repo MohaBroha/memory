@@ -9,6 +9,7 @@ export function createExitConfirmationElement(
   const themeAssets = THEME_ASSETS[theme];
   const overlayElement = document.createElement("div");
   overlayElement.classList.add("exit-confirmation");
+  overlayElement.dataset.theme = theme;
 
   const dialogElement = document.createElement("div");
   dialogElement.classList.add("exit-confirmation__dialog");
@@ -62,6 +63,12 @@ if (themeAssets.popupButton.exitHover) {
 
   dialogElement.append(titleElement, actionsElement);
   overlayElement.appendChild(dialogElement);
+
+  overlayElement.addEventListener("click", (event) => {
+  if (event.target === overlayElement) {
+    onBack();
+  }
+});
 
   return overlayElement;
 }
