@@ -5,7 +5,7 @@ import { getWinner } from "../game/score";
 import { createSettingsElement } from "./settings";
 import { showView } from "./view";
 
-const RESULT_DELAY = 5500;
+const RESULT_DELAY = 23500;
 
 export function createGameOverElement(gameState: GameState): HTMLElement {
 
@@ -17,6 +17,7 @@ export function createGameOverElement(gameState: GameState): HTMLElement {
   gameOverElement.id = "game-over";
   gameOverElement.classList.add("game-over");
   gameOverElement.dataset.theme = gameState.settings.theme;
+  
 
   const titleElement = document.createElement("h2");
 
@@ -48,15 +49,21 @@ gameOverElement.append(
   newGameButton,
 );
 
-  window.setTimeout(() => {
-    gameOverElement.classList.add("is-result");
+window.setTimeout(() => {
+  const winner = getWinner(gameState.scores);
 
-    showResult(
-      resultElement,
-      gameState,
-      gameOverAssets,
-    );
-  }, RESULT_DELAY);
+  if (winner !== null) {
+    createConfetti(gameOverElement);
+  }
+
+  gameOverElement.classList.add("is-result");
+
+  showResult(
+    resultElement,
+    gameState,
+    gameOverAssets,
+  );
+}, RESULT_DELAY);
 
   return gameOverElement;
 }
@@ -78,11 +85,21 @@ function showResult(
   createWinnerResult(resultContainer, winner, gameOverAssets);
 }
 
+function createConfetti(gameOverElement: HTMLElement): void {
+  const confetti = document.createElement("div");
+
+  confetti.classList.add("game-over__confetti");
+
+  gameOverElement.append(confetti);
+}
+
 function createWinnerResult(
   resultContainer: HTMLElement,
   winner: 1 | 2,
   gameOverAssets: GameOverAssets,
 ): void {
+
+
   const resultTitle = document.createElement("p");
 
   resultTitle.classList.add("game-over__result-title");
@@ -108,7 +125,7 @@ winnerName.classList.add(
   winnerImage.src = winnerAsset ?? gameOverAssets.winner ?? "";
   winnerImage.alt = winner === 1 ? "Blue player" : "Orange player";
 
-  resultContainer.append(resultTitle, winnerName, winnerImage);
+  resultContainer.append(resultTitle, winnerName, winnerImage, );
 }
 
 function createDrawResult(
@@ -156,11 +173,18 @@ function createNewGameButton(
 
 function createScoreElement(gameState: GameState): HTMLDivElement {
   const scoreElement = document.createElement("div");
-
   scoreElement.classList.add("game__score");
+
+  const themeAssets = THEME_ASSETS[gameState.settings.theme];
 
   const playerOne = gameState.scores.find((score) => score.player === 1);
   const playerTwo = gameState.scores.find((score) => score.player === 2);
+
+  const blueIcon = document.createElement("img");
+
+  blueIcon.classList.add("game__score-icon");
+  blueIcon.src = themeAssets.calculator.blue;
+  blueIcon.alt = "";
 
   const bluePlayer = document.createElement("span");
 
@@ -168,7 +192,17 @@ function createScoreElement(gameState: GameState): HTMLDivElement {
     "game__score-player",
     "game__score-player--blue",
   );
-  bluePlayer.textContent = `Blue ${playerOne?.points ?? 0}`;
+
+  bluePlayer.append(
+    blueIcon,
+    document.createTextNode(`Blue ${playerOne?.points ?? 0}`),
+  );
+
+  const orangeIcon = document.createElement("img");
+
+  orangeIcon.classList.add("game__score-icon");
+  orangeIcon.src = themeAssets.calculator.orange;
+  orangeIcon.alt = "";
 
   const orangePlayer = document.createElement("span");
 
@@ -176,7 +210,11 @@ function createScoreElement(gameState: GameState): HTMLDivElement {
     "game__score-player",
     "game__score-player--orange",
   );
-  orangePlayer.textContent = `Orange ${playerTwo?.points ?? 0}`;
+
+  orangePlayer.append(
+    orangeIcon,
+    document.createTextNode(`Orange ${playerTwo?.points ?? 0}`),
+  );
 
   scoreElement.append(bluePlayer, orangePlayer);
 
