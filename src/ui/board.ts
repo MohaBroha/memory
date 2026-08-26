@@ -63,16 +63,15 @@ function createGameHeader(
   playerOneIcon.src = themeAssets.calculator.blue;
   playerOneIcon.alt = "";
   playerOneIcon.classList.add("game__score-icon");
-const playerOnePoints = document.createElement("span");
-playerOnePoints.classList.add("game__score-points");
+  const playerOnePoints = document.createElement("span");
+  playerOnePoints.classList.add("game__score-points");
 
-playerOnePoints.textContent =
-  gameState.settings.theme === "coding-vibes"
-    ? `Blue ${playerOneScore?.points ?? 0}`
-    : String(playerOneScore?.points ?? 0);
+  playerOnePoints.textContent =
+    gameState.settings.theme === "coding-vibes"
+      ? `Blue ${playerOneScore?.points ?? 0}`
+      : String(playerOneScore?.points ?? 0);
 
-playerOneElement.append(playerOneIcon, playerOnePoints);
-
+  playerOneElement.append(playerOneIcon, playerOnePoints);
 
   const playerTwoElement = document.createElement("span");
   const playerTwoIcon = document.createElement("img");
@@ -83,16 +82,16 @@ playerOneElement.append(playerOneIcon, playerOnePoints);
   playerTwoIcon.src = themeAssets.calculator.orange;
   playerTwoIcon.alt = "";
   playerTwoIcon.classList.add("game__score-icon");
-  
-const playerTwoPoints = document.createElement("span");
-playerTwoPoints.classList.add("game__score-points");
 
-playerTwoPoints.textContent =
-  gameState.settings.theme === "coding-vibes"
-    ? `Orange ${playerTwoScore?.points ?? 0}`
-    : String(playerTwoScore?.points ?? 0);
+  const playerTwoPoints = document.createElement("span");
+  playerTwoPoints.classList.add("game__score-points");
 
-playerTwoElement.append(playerTwoIcon, playerTwoPoints);
+  playerTwoPoints.textContent =
+    gameState.settings.theme === "coding-vibes"
+      ? `Orange ${playerTwoScore?.points ?? 0}`
+      : String(playerTwoScore?.points ?? 0);
+
+  playerTwoElement.append(playerTwoIcon, playerTwoPoints);
 
   scoreElement.append(playerOneElement, playerTwoElement);
 

@@ -1,6 +1,6 @@
 .game {
   min-height: 100vh;
-  padding: 1rem;
+  padding: 3rem 1rem 1rem;
 }
 
 .game__header {
@@ -46,9 +46,9 @@
 
 .field {
   display: grid;
-  gap: clamp(0.25rem, 1vw, 0.35rem);
-  width: min(100%, 70rem);
-  margin: 0 auto;
+  gap: clamp(0.25rem, 1vw, 0.55rem);
+  width: min(100%, 45rem);
+  margin: 1rem auto 0;
 }
 
 .field[data-card-count="16"] {
@@ -72,4 +72,3 @@
     justify-self: end;
   }
 }
-

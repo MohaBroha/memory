@@ -5,10 +5,8 @@ import { getWinner } from "../game/score";
 import { createSettingsElement } from "./settings";
 import { showView } from "./view";
 
-const RESULT_DELAY = 23500;
-
+const RESULT_DELAY = 4500;
 export function createGameOverElement(gameState: GameState): HTMLElement {
-
   const themeAssets = THEME_ASSETS[gameState.settings.theme];
   const gameOverAssets = themeAssets.gameOver;
 
@@ -17,24 +15,23 @@ export function createGameOverElement(gameState: GameState): HTMLElement {
   gameOverElement.id = "game-over";
   gameOverElement.classList.add("game-over");
   gameOverElement.dataset.theme = gameState.settings.theme;
-  
 
   const titleElement = document.createElement("h2");
 
   titleElement.classList.add("game-over__title");
   titleElement.textContent = "Game over";
-const scoreWrapper = document.createElement("div");
+  const scoreWrapper = document.createElement("div");
 
-scoreWrapper.classList.add("game-over__score-wrapper");
+  scoreWrapper.classList.add("game-over__score-wrapper");
 
-const scoreLabel = document.createElement("p");
+  const scoreLabel = document.createElement("p");
 
-scoreLabel.classList.add("game-over__score-label");
-scoreLabel.textContent = "Final score";
+  scoreLabel.classList.add("game-over__score-label");
+  scoreLabel.textContent = "Final score";
 
-const scoreElement = createScoreElement(gameState);
+  const scoreElement = createScoreElement(gameState);
 
-scoreWrapper.append(scoreLabel, scoreElement);
+  scoreWrapper.append(scoreLabel, scoreElement);
 
   const resultElement = document.createElement("div");
 
@@ -42,28 +39,24 @@ scoreWrapper.append(scoreLabel, scoreElement);
 
   const newGameButton = createNewGameButton(gameOverAssets);
 
-gameOverElement.append(
-  titleElement,
-  scoreWrapper,
-  resultElement,
-  newGameButton,
-);
-
-window.setTimeout(() => {
-  const winner = getWinner(gameState.scores);
-
-  if (winner !== null) {
-    createConfetti(gameOverElement);
-  }
-
-  gameOverElement.classList.add("is-result");
-
-  showResult(
+  gameOverElement.append(
+    titleElement,
+    scoreWrapper,
     resultElement,
-    gameState,
-    gameOverAssets,
+    newGameButton,
   );
-}, RESULT_DELAY);
+
+  window.setTimeout(() => {
+    const winner = getWinner(gameState.scores);
+
+    if (winner !== null) {
+      createConfetti(gameOverElement);
+    }
+
+    gameOverElement.classList.add("is-result");
+
+    showResult(resultElement, gameState, gameOverAssets);
+  }, RESULT_DELAY);
 
   return gameOverElement;
 }
@@ -98,8 +91,6 @@ function createWinnerResult(
   winner: 1 | 2,
   gameOverAssets: GameOverAssets,
 ): void {
-
-
   const resultTitle = document.createElement("p");
 
   resultTitle.classList.add("game-over__result-title");
@@ -107,12 +98,12 @@ function createWinnerResult(
 
   const winnerName = document.createElement("p");
 
-winnerName.classList.add(
-  "game-over__winner-name",
-  winner === 1
-    ? "game-over__winner-name--blue"
-    : "game-over__winner-name--orange",
-);
+  winnerName.classList.add(
+    "game-over__winner-name",
+    winner === 1
+      ? "game-over__winner-name--blue"
+      : "game-over__winner-name--orange",
+  );
   winnerName.textContent = winner === 1 ? "Blue Player" : "Orange Player";
 
   const winnerImage = document.createElement("img");
@@ -125,7 +116,7 @@ winnerName.classList.add(
   winnerImage.src = winnerAsset ?? gameOverAssets.winner ?? "";
   winnerImage.alt = winner === 1 ? "Blue player" : "Orange player";
 
-  resultContainer.append(resultTitle, winnerName, winnerImage, );
+  resultContainer.append(resultTitle, winnerName, winnerImage);
 }
 
 function createDrawResult(
@@ -188,14 +179,15 @@ function createScoreElement(gameState: GameState): HTMLDivElement {
 
   const bluePlayer = document.createElement("span");
 
-  bluePlayer.classList.add(
-    "game__score-player",
-    "game__score-player--blue",
-  );
+  bluePlayer.classList.add("game__score-player", "game__score-player--blue");
 
   bluePlayer.append(
     blueIcon,
-    document.createTextNode(`Blue ${playerOne?.points ?? 0}`),
+    document.createTextNode(
+      gameState.settings.theme === "coding-vibes"
+        ? `Blue ${playerOne?.points ?? 0}`
+        : `${playerOne?.points ?? 0}`,
+    ),
   );
 
   const orangeIcon = document.createElement("img");
@@ -213,7 +205,11 @@ function createScoreElement(gameState: GameState): HTMLDivElement {
 
   orangePlayer.append(
     orangeIcon,
-    document.createTextNode(`Orange ${playerTwo?.points ?? 0}`),
+    document.createTextNode(
+      gameState.settings.theme === "coding-vibes"
+        ? `Orange ${playerTwo?.points ?? 0}`
+        : `${playerTwo?.points ?? 0}`,
+    ),
   );
 
   scoreElement.append(bluePlayer, orangePlayer);

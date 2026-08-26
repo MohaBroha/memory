@@ -64,7 +64,7 @@
 
 .game-over.is-result .game-over__result {
   display: flex;
-  animation: game-over-result-slide-in 0.45s ease-out both;
+  animation: game-over-result-slide-in 1.7s ease-out both;
 }
 
 @keyframes game-over-result-slide-in {
@@ -86,7 +86,6 @@
 .game-over.is-result .game-over__score-wrapper {
   display: none;
 }
-
 
 .game-over.is-result .game-over__new-game {
   display: block;
@@ -128,6 +127,19 @@
 .game-over__new-game:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 0.25rem;
+}
+
+.game-over__new-game {
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.game-over__new-game:hover {
+  transform: scale(0.96);
+}
+
+.game-over__new-game:active {
+  transform: scale(0.92);
 }
 
 .game-over[data-theme="coding-vibes"] {
@@ -224,37 +236,24 @@
   }
 
   .game-over__draw-image {
-  width: clamp(10rem, 25vw, 18rem);
-  max-width: 100%;
-  height: auto;
-  margin-top: clamp(1rem, 3vw, 2rem);
-}
-
-.game-over__draw-name {
-  color: #4dd5bc;
-  font-family: "Red Rose", sans-serif;
-  font-size: clamp(2rem, 15vw, 8rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  text-shadow:
-    -7px 0 8px #4dd5bc80,
-    0 2px 0 rgba(0, 0, 0, 0.3),
-    0 0 3px rgba(77, 213, 188, 0.95),
-    0 0 8px rgba(77, 213, 188, 0.65);
-}
-
-  .game-over__new-game {
-    border-radius: 0.5rem;
-    transition: transform 0.2s ease;
+    width: clamp(10rem, 25vw, 18rem);
+    max-width: 100%;
+    height: auto;
+    margin-top: clamp(1rem, 3vw, 2rem);
   }
 
-  .game-over__new-game:hover {
-    transform: scale(0.96);
-  }
-
-  .game-over__new-game:active {
-    transform: scale(0.92);
+  .game-over__draw-name {
+    color: #4dd5bc;
+    font-family: "Red Rose", sans-serif;
+    font-size: clamp(2rem, 15vw, 8rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    text-shadow:
+      -7px 0 8px #4dd5bc80,
+      0 2px 0 rgba(0, 0, 0, 0.3),
+      0 0 3px rgba(77, 213, 188, 0.95),
+      0 0 8px rgba(77, 213, 188, 0.65);
   }
 }
 
@@ -263,44 +262,275 @@
   color: #ffffff;
   font-family: "Orbitron", sans-serif;
 
-  .game-over__title,
-  .game-over__winner-name,
-  .game-over__draw-name {
+  .game-over__title {
+    color: #f5006d;
     font-family: "Orbitron", sans-serif;
+    font-size: clamp(3.5rem, 9vw, 10rem);
     font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .game-over__score-label {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-weight: 400;
+  }
+
+  .game__score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.75rem;
+    padding: 0.6rem 1.8rem;
+    box-sizing: border-box;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+  }
+
+  .game__score-player {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    white-space: nowrap;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(1.1rem, 3vw, 2.5rem);
+    font-weight: 700;
+  }
+
+  .game__score-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+  }
+
+  .game__score-player--blue {
+    color: #1598e8;
+  }
+
+  .game__score-player--orange {
+    color: #ff7600;
+  }
+
+  .game-over__result-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+  }
+
+  .game-over__winner-name {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+  }
+
+  .game-over__winner-name--blue {
+    color: #1598e8;
+  }
+
+  .game-over__winner-name--orange {
+    color: #ff7600;
+  }
+
+  .game-over__draw-name {
+    color: #f5006d;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-weight: 700;
+  }
+
+  .game-over__winner-image,
+  .game-over__draw-image {
+    width: clamp(10rem, 24vw, 18rem);
   }
 }
 
 .game-over[data-theme="da-project"] {
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      #292929 0%,
-      #222222 35%,
-      #1b1b1b 70%,
-      #151515 100%
-    );
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    #292929 0%,
+    #222222 35%,
+    #1b1b1b 70%,
+    #151515 100%
+  );
   color: #f1f1f1;
   font-family: "Figtree", sans-serif;
 
-  .game-over__title,
-  .game-over__winner-name,
-  .game-over__draw-name {
+  .game-over__title {
+    color: #ffffff;
     font-family: "Figtree", sans-serif;
+    font-size: clamp(3.5rem, 9vw, 10rem);
     font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .game-over__score-label {
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-weight: 400;
+  }
+
+  .game__score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.75rem;
+    padding: 0.6rem 1.8rem;
+    box-sizing: border-box;
+    gap: clamp(1rem, 2vw, 2.5rem);
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+  }
+
+  .game__score-player {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(1.1rem, 3vw, 2.5rem);
+    font-weight: 700;
+  }
+
+  .game__score-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+  }
+
+  .game__score-player--blue {
+    color: #1598e8;
+  }
+
+  .game__score-player--orange {
+    color: #ff7600;
+  }
+
+  .game-over__result-title {
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+  }
+
+  .game-over__winner-name {
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+  }
+
+  .game-over__winner-name--blue {
+    color: #1598e8;
+  }
+
+  .game-over__winner-name--orange {
+    color: #ff7600;
+  }
+
+  .game-over__draw-name {
+    color: #ffffff;
+    font-family: "Figtree", sans-serif;
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-weight: 700;
+  }
+
+  .game-over__winner-image,
+  .game-over__draw-image {
+    width: clamp(10rem, 24vw, 18rem);
   }
 }
 
 .game-over[data-theme="food"] {
-  background-color: #f3e8d5;
-  color: #a6530c;
+  background-color: #f3832d;
+  color: #ffffff;
   font-family: "Klee One", sans-serif;
 
-  .game-over__title,
-  .game-over__winner-name,
-  .game-over__draw-name {
+  &.is-result {
+    background-color: #f3e8d5;
+    color: #a6530c;
+  }
+
+  .game-over__title {
+    color: #f3e8d5;
     font-family: "Klee One", sans-serif;
+    font-size: clamp(3.5rem, 9vw, 10rem);
     font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .game-over__score-label {
+    color: #f3e8d5;
+    font-family: "Klee One", sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-weight: 400;
+  }
+
+  .game__score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.75rem;
+    padding: 0.6rem 1rem;
+    box-sizing: border-box;
+    gap: clamp(1rem, 2vw, 2.5rem);
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+  }
+
+  .game__score-player {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+    font-family: "Klee One", sans-serif;
+    font-size: clamp(1.1rem, 3vw, 2.5rem);
+    font-weight: 600;
+  }
+
+  .game__score-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+  }
+
+  .game__score-player--blue {
+    color: #1598e8;
+  }
+
+  .game__score-player--orange {
+    color: #ff7600;
+  }
+
+  .game-over__result-title {
+    color: #a45212;
+    font-family: "Klee One", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+  }
+
+  .game-over__winner-name {
+    font-family: "Klee One", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+  }
+
+  .game-over__winner-name--blue {
+    color: #a45212;
+  }
+
+  .game-over__winner-name--orange {
+    color: #a45212;
+  }
+
+  .game-over__draw-name {
+    color: #f3832d;
+    font-family: "Klee One", sans-serif;
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-weight: 600;
+  }
+
+  .game-over__winner-image,
+  .game-over__draw-image {
+    width: clamp(10rem, 24vw, 18rem);
   }
 }
 

@@ -25,7 +25,6 @@ export interface ThemeAssets {
     exitDefault: string;
     exitHover?: string;
     border?: string;
-
   };
 
   gameOver: GameOverAssets;
@@ -145,7 +144,7 @@ export const THEME_ASSETS: Record<Theme, ThemeAssets> = {
       blueWinner: "/assets/components/food/blue-winner-1.svg",
       orangeWinner: "/assets/components/food/orange-winner-1.svg",
       draw: "/assets/components/food/draw-icons-3.svg",
-      homeButton: "/assets/components/food/home-btn-2.svg",
+      homeButton: "/assets/components/food/button Pop up_04.svg",
     },
   },
 };
