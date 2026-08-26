@@ -45,29 +45,30 @@
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1.25rem;
+  margin-left: -0.5rem;
   font-family: "Almarai", sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: #f2f4f5;
 }
 
 .settings__group legend img {
-  width: 28px;
-  height: 28px;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
   object-fit: contain;
 }
 
 .settings__option {
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   min-height: 32px;
   margin-bottom: 0.75rem;
-  margin-left: 2rem;
+  margin-left: 3.5rem;
   color: #f2f4f5;
   font-family: "Almarai", sans-serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
   cursor: pointer;
 }
 
@@ -147,11 +148,12 @@
 
 .settings__theme-preview {
   display: block;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  margin: 0 0 2rem;
-  object-fit: contain;
+  width: min(100%, 320px);
+  height: 160px;
+  margin: 0 auto 2rem;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 1rem;
 }
 
 .settings__start {
@@ -160,6 +162,9 @@
   margin-top: 0.5rem;
   padding: 0;
   border: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  clip-path: inset(0 round 0.5rem);
   background-color: transparent;
   background-image: url("/assets/components/settings/Start Button/disabled.svg");
   background-repeat: no-repeat;
@@ -190,6 +195,7 @@
   justify-content: center;
   width: 100%;
   margin-top: 1rem;
+  border-radius: 1rem;
 }
 
 .settings__summary-item,
@@ -199,6 +205,161 @@
 
 .settings__summary .settings__start {
   display: block;
+}
+
+@media (min-width: 40rem) and (max-width: 68.74rem) {
+  .settings {
+    min-height: 100vh;
+    width: calc(100% - 2.5rem);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2.5rem 0 4rem;
+    display: grid;
+    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 3vw, 2.5rem);
+    grid-template-rows: auto auto auto auto;
+    align-items: start;
+  }
+
+  .settings__title {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+  }
+
+  .settings__title::after {
+    left: -0.75rem;
+    bottom: -1rem;
+    width: 115%;
+    height: clamp(14px, 2vw, 16px);
+  }
+
+  .settings__group {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .settings__group legend {
+    gap: clamp(0.6rem, 1vw, 0.85rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .settings__group legend img {
+    width: clamp(24px, 3.5vw, 32px);
+    height: clamp(24px, 3.5vw, 32px);
+  }
+
+  .settings__option {
+    min-height: clamp(30px, 3.5vw, 40px);
+    gap: clamp(0.6rem, 1vw, 0.95rem);
+    margin-bottom: clamp(0.5rem, 1vw, 0.8rem);
+    margin-left: clamp(1rem, 2vw, 2.25rem);
+    font-size: clamp(0.95rem, 1.5vw, 1.5rem);
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .settings__option input {
+    width: clamp(22px, 2.5vw, 26px);
+    height: clamp(22px, 2.5vw, 26px);
+  }
+
+  .settings__indicator {
+    width: clamp(48px, 5vw, 62px);
+  }
+
+  .settings__group:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .settings__group:nth-of-type(2) {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: clamp(-6rem, -8vw, -4.5rem);
+  }
+
+  .settings__group:nth-of-type(3) {
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: clamp(-6rem, -8vw, -4.5rem);
+  }
+
+  .settings__theme-preview {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    width: 100%;
+    max-width: clamp(400px, 58vw, 690px);
+    height: auto;
+    margin: 0;
+    justify-self: start;
+    align-self: start;
+  }
+
+  .settings__summary {
+    grid-column: 2;
+    grid-row: 4;
+    width: 100%;
+    max-width: 100%;
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+    padding: clamp(0.6rem, 1vw, 1rem) clamp(0.75rem, 1.5vw, 1.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: #363a3b;
+  }
+
+  .settings__summary.is-open {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    justify-content: space-evenly;
+    gap: 0;
+  }
+
+  .settings__summary-item {
+    display: block;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: #b3dbdb;
+    font-family: "Almarai", sans-serif;
+    font-size: clamp(0.8rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .settings__summary-separator {
+    display: block;
+    width: clamp(18px, 2.5vw, 32px);
+    height: clamp(40px, 5vw, 70px);
+    flex: 0 0 auto;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  .settings__summary.is-open .settings__summary-separator {
+    width: clamp(20px, 2.8vw, 36px);
+    height: clamp(42px, 5.5vw, 74px);
+  }
+
+  .settings__summary .settings__start {
+    width: clamp(90px, 12vw, 150px);
+    min-width: clamp(90px, 12vw, 150px);
+    height: clamp(42px, 5vw, 58px);
+    flex: 0 0 auto;
+    margin: 0;
+  }
 }
 
 @media (min-width: 68.75rem) {
@@ -248,11 +409,13 @@
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.1;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .settings__group legend img {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     flex-shrink: 0;
   }
 
@@ -267,6 +430,8 @@
     font-size: 1.5rem;
     font-weight: 500;
     white-space: nowrap;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .settings__option input {
@@ -389,6 +554,7 @@
     flex: 0 0 150px;
     margin: 0;
     transition: transform 0.25s ease;
+    border-radius: 1rem;
   }
 
   .settings__summary .settings__start:not(:disabled):hover {
@@ -422,11 +588,15 @@
   }
 
   .settings__group legend {
+    justify-content: flex-start;
+    text-align: left;
     font-size: 2.3rem;
   }
 
   .settings__option {
     font-size: 1.5rem;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .settings__theme-preview {
