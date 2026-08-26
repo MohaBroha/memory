@@ -1,0 +1,290 @@
+.game-over {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+
+  animation: game-over-slide-in 0.45s ease-out both;
+}
+
+@keyframes game-over-slide-in {
+  from {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.game-over__title {
+  margin: 0;
+
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.game-over__score-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.game-over__score-label {
+  margin: 0 0 1rem;
+
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.game-over__score {
+  margin: 0;
+}
+
+
+
+.game-over__result {
+  display: none;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+
+
+.game-over.is-result .game-over__title {
+  display: none;
+}
+
+.game-over.is-result .game-over__score-wrapper {
+  display: none;
+}
+
+.game-over.is-result .game-over__result {
+  display: flex;
+}
+
+.game-over.is-result .game-over__new-game {
+  display: block;
+}
+
+.game-over__winner-name,
+.game-over__draw-name {
+  margin: 0.5rem 0 0;
+
+  font-size: clamp(1.5rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.game-over__winner-image,
+.game-over__draw-image {
+  width: clamp(8rem, 28vw, 18rem);
+  max-width: 100%;
+  height: auto;
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+
+
+.game-over__new-game {
+  display: none;
+
+  width: clamp(8rem, 30vw, 10rem);
+  aspect-ratio: 150 / 58;
+
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  padding: 0;
+
+  border: 0;
+  border-radius: 0.5rem;
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  color: transparent;
+  font-size: 0;
+
+  cursor: pointer;
+}
+
+.game-over.is-result {
+  .game-over__new-game {
+    display: block;
+  }
+}
+
+.game-over__new-game:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 0.25rem;
+}
+
+
+
+.game-over[data-theme="coding-vibes"] {
+  background-color: #2c2e2e;
+  color: #f2f4f5;
+  font-family: "Red Rose", sans-serif;
+
+.game-over__title {
+  color: #4dd5bc;
+  font-family: "Red Rose", sans-serif;
+  font-size: clamp(3rem, 7vw, 6.125rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+  .game-over__score-label {
+    color: #ffffff;
+    font-family: "Red Rose", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+  }
+
+  .game__score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 18.25rem);
+    height: 3.875rem;
+    padding: 1.0625rem 1.25rem;
+    box-sizing: border-box;
+    gap: 1.25rem;
+    background-color: #3f5552;
+  }
+
+  .game__score-player {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.4rem;
+    white-space: nowrap;
+    font-family: "Red Rose", sans-serif;
+    font-size: 1.375rem;
+  }
+
+  .game__score-player--blue {
+    color: #29aef5;
+  }
+
+  .game__score-player--orange {
+    color: #f58a27;
+  }
+
+  .game-over__result-title {
+    color: #ffffff;
+    font-family: "Red Rose", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 400;
+  }
+.game-over__winner-name {
+  font-family: "Red Rose", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+}
+
+.game-over[data-theme="coding-vibes"]
+  .game-over__winner-name--blue {
+  color: #29aef5;
+}
+
+.game-over[data-theme="coding-vibes"]
+  .game-over__winner-name--orange {
+  color: #f58a27;
+}
+
+  .game-over__draw-name {
+    font-family: "Red Rose", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+  }
+}
+
+
+
+.game-over[data-theme="games"] {
+  background-color: #294f60;
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+
+  .game-over__title,
+  .game-over__winner-name,
+  .game-over__draw-name {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+  }
+}
+
+
+
+.game-over[data-theme="da-project"] {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      #292929 0%,
+      #222222 35%,
+      #1b1b1b 70%,
+      #151515 100%
+    );
+
+  color: #f1f1f1;
+  font-family: "Figtree", sans-serif;
+
+  .game-over__title,
+  .game-over__winner-name,
+  .game-over__draw-name {
+    font-family: "Figtree", sans-serif;
+    font-weight: 700;
+  }
+}
+
+
+
+.game-over[data-theme="food"] {
+  background-color: #f3e8d5;
+  color: #a6530c;
+  font-family: "Klee One", sans-serif;
+
+  .game-over__title,
+  .game-over__winner-name,
+  .game-over__draw-name {
+    font-family: "Klee One", sans-serif;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 40rem) {
+  .game-over {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (min-width: 68.75rem) {
+  .game-over {
+    padding: 4rem 3rem;
+  }
+
+
+}
