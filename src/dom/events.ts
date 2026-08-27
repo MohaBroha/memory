@@ -1,3 +1,4 @@
+/** Adds a click event handler to an HTML element. */
 export function addClickListener(
   element: HTMLElement,
   handler: EventListener,

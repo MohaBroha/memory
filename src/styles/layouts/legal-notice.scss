@@ -11,7 +11,7 @@
 
 .legal-notice h1 {
   margin: 0 0 2rem;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 400;
 }
 
@@ -25,12 +25,14 @@
 .legal-notice__content h2 {
   margin: 2.5rem 0 0.75rem;
   color: #f5ed5c;
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   font-weight: 400;
 }
 
 .legal-notice__content p {
   margin: 0 0 1.25rem;
+   font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .legal-notice__back {
@@ -56,8 +58,9 @@
 .legal-notice__footer {
   margin-top: auto;
   padding-top: 3rem;
-  color: #f5ed5c;
+  color: white;
   font-family: "Almarai";
   font-size: 0.95rem;
   text-align: center;
+  letter-spacing: 0.3rem;
 }

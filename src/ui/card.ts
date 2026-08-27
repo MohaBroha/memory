@@ -8,49 +8,56 @@ const CARD_BACK_ASSETS: Record<Theme, string> = {
   food: "/assets/components/food/cards/card-back-5.svg",
 };
 
-export function createCardElement(card: Card, theme: Theme): HTMLButtonElement {
+/** Creates the DOM element for a card and applies its current state classes. */
+export function createCardElement(
+  card: Card,
+  theme: Theme,
+): HTMLButtonElement {
   const cardElement = document.createElement("button");
-  const cardInner = document.createElement("div");
-  const cardFront = document.createElement("div");
-  const cardBack = document.createElement("div");
-  const frontImage = document.createElement("img");
-  const backImage = document.createElement("img");
-
   cardElement.type = "button";
   cardElement.classList.add("card");
   cardElement.classList.toggle("card--da-project", theme === "da-project");
-
-  cardInner.classList.add("card__inner");
-
-  cardFront.classList.add("card__face", "card__face--front");
-
-  cardBack.classList.add("card__face", "card__face--back");
-
-  frontImage.src = CARD_BACK_ASSETS[theme];
-  frontImage.alt = "";
-  frontImage.classList.add("card__image");
-
-  backImage.src = card.asset;
-  backImage.alt = "";
-  backImage.classList.add("card__image");
-
-  cardFront.appendChild(frontImage);
-  cardBack.appendChild(backImage);
-
-  cardInner.appendChild(cardFront);
-  cardInner.appendChild(cardBack);
-
+  const cardInner = createCardInner(card, theme);
   cardElement.appendChild(cardInner);
+  setCardState(cardElement, card);
+  cardElement.dataset.cardId = card.id;
+  return cardElement;
+}
 
+/** Creates the inner element containing both faces of a card. */
+function createCardInner(card: Card, theme: Theme): HTMLDivElement {
+  const cardInner = document.createElement("div");
+  const cardFront = createCardFace("front", CARD_BACK_ASSETS[theme]);
+  const cardBack = createCardFace("back", card.asset);
+  cardInner.classList.add("card__inner");
+  cardInner.append(cardFront, cardBack);
+  return cardInner;
+}
+
+/** Creates one card face with its image. */
+function createCardFace(
+  face: "front" | "back",
+  imageSrc: string,
+): HTMLDivElement {
+  const cardFace = document.createElement("div");
+  const image = document.createElement("img");
+  cardFace.classList.add("card__face", `card__face--${face}`);
+  image.src = imageSrc;
+  image.alt = "";
+  image.classList.add("card__image");
+  cardFace.appendChild(image);
+  return cardFace;
+}
+
+/** Applies flipped and matched state classes to a card element. */
+function setCardState(
+  cardElement: HTMLButtonElement,
+  card: Card,
+): void {
   if (card.isFlipped || card.isMatched) {
     cardElement.classList.add("is-flipped");
   }
-
   if (card.isMatched) {
     cardElement.classList.add("is-matched");
   }
-
-  cardElement.dataset.cardId = card.id;
-
-  return cardElement;
 }

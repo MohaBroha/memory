@@ -8,6 +8,7 @@ const DEFAULT_SETTINGS: GameSettings = {
   theme: "coding-vibes",
 };
 
+/** Creates an idle game state using the supplied or default settings. */
 export function createInitialGameState(
   settings: GameSettings = DEFAULT_SETTINGS,
 ): GameState {

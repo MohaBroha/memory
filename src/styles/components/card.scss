@@ -65,7 +65,9 @@
     .card__inner {
       transform: rotateY(180deg);
     }
+  }
 
+  &.is-flipped:not(.is-matched) {
     animation: card-flip-glow 0.45s ease;
   }
 

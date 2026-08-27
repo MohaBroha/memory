@@ -1,3 +1,4 @@
+/** Represents a card in the memory game board. */
 export interface Card {
   id: string;
   pairId: string;

@@ -1,10 +1,12 @@
 import type { Theme } from "../types/settings.types";
 
+/** Describes the asset and pair identifier used by a memory card. */
 export interface CardAsset {
   pairId: string;
   asset: string;
 }
 
+/** Provides the available card assets for each game theme. */
 export const CARD_ASSETS: Record<Theme, CardAsset[]> = {
   "coding-vibes": [
     {

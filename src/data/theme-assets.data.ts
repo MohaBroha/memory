@@ -1,5 +1,6 @@
 import type { Theme } from "../types/settings.types";
 
+/** Contains the optional and required assets used by a Game Over view. */
 export interface GameOverAssets {
   blueWinner?: string;
   orangeWinner?: string;
@@ -8,17 +9,16 @@ export interface GameOverAssets {
   homeButton?: string;
 }
 
+/** Contains the themed assets used throughout the game interface. */
 export interface ThemeAssets {
   calculator: {
     blue: string;
     orange: string;
   };
-
   exitButton: {
     default: string;
     hover: string;
   };
-
   popupButton: {
     backDefault: string;
     backHover: string;
@@ -26,10 +26,10 @@ export interface ThemeAssets {
     exitHover?: string;
     border?: string;
   };
-
   gameOver: GameOverAssets;
 }
 
+/** Maps each supported theme to its interface assets. */
 export const THEME_ASSETS: Record<Theme, ThemeAssets> = {
   "coding-vibes": {
     calculator: {
