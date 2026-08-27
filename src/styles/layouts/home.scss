@@ -8,7 +8,6 @@
   background-color: #2c2e2e;
   color: #ffffff;
 }
-
 .home__content {
   position: relative;
   z-index: 1;
@@ -16,70 +15,62 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(1rem, 1.5vw, 1.5rem);
-  width: min(100%, 90rem);
-  padding: 2rem;
+  gap: clamp(0.8rem, 1.2vw, 1.2rem);
+  width: min(100%, 72rem);
+  padding: 1.6rem;
 }
-
 .home__heading {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: max-content;
   max-width: 100%;
-  gap: clamp(1rem, 1.5vw, 1.5rem);
+  gap: clamp(0.8rem, 1.2vw, 1.2rem);
 }
-
 .home__subtitle {
   margin: 0;
   font-family: "Almarai", sans-serif;
-  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: clamp(1.2rem, 3.2vw, 2.4rem);
   font-weight: 400;
   line-height: 1;
 }
-
 .home__title {
   margin: 0;
   max-width: 100%;
   font-family: "Red Rose", sans-serif;
-  font-size: clamp(3.5rem, 9vw, 8.75rem);
+  font-size: clamp(2.8rem, 7.2vw, 7rem);
   font-weight: 700;
   line-height: 1;
   white-space: normal;
 }
-
 .home__brand {
   position: absolute;
-  top: 1.5rem;
+  top: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
   font-family: "Almarai", sans-serif;
-  font-size: clamp(1.5rem, 4vw, 10rem);
+  font-size: clamp(1.2rem, 3.2vw, 8rem);
   font-weight: 400;
   color: white;
   white-space: nowrap;
-    letter-spacing: 0.2rem;
-
+  letter-spacing: 0.16rem;
 }
-
 .home__brand span {
   display: inline-block;
   opacity: 0;
   transform: translateX(-12px);
   animation: brand-letter-in 0.45s ease-out forwards;
 }
-
 @keyframes brand-letter-in {
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
 .home__play {
-  width: clamp(9.5rem, 15vw, 13.75rem);
-  height: clamp(5.45rem, 6vw, 5.6rem);
+  width: clamp(7.6rem, 12vw, 11rem);
+  height: clamp(4.36rem, 4.8vw, 4.48rem);
   border: 0;
   padding: 0;
   background-color: transparent;
@@ -89,17 +80,15 @@
   background-size: contain;
   cursor: pointer;
 }
-
 .home__play.is-hover {
   background-image: url("/assets/components/home/play-hover.svg");
 }
-
 .home__controller {
   position: absolute;
   z-index: 1;
   left: 0;
   bottom: 0;
-  width: min(38vw, 19.625rem);
+  width: min(30.4vw, 15.7rem);
   height: auto;
   padding: 0;
   border: 0;
@@ -107,51 +96,47 @@
   cursor: pointer;
   animation: controller-neon 3.9s ease-in-out infinite;
 }
-
 .home__controller img {
   display: block;
   width: 100%;
   height: auto;
 }
-
 @keyframes controller-neon {
   0%,
   100% {
-    filter: brightness(0.45) drop-shadow(0 0 0.2rem rgba(240, 234, 110, 0.35))
-      drop-shadow(0 0 0.6rem rgba(240, 234, 110, 0.2));
+    filter: brightness(0.45) drop-shadow(0 0 0.16rem rgba(240, 234, 110, 0.35))
+      drop-shadow(0 0 0.48rem rgba(240, 234, 110, 0.2));
   }
   35% {
-    filter: brightness(0.7) drop-shadow(0 0 0.3rem rgba(240, 234, 110, 0.75))
-      drop-shadow(0 0 0.8rem rgba(240, 234, 110, 0.5))
-      drop-shadow(0 0 1.5rem rgba(240, 234, 110, 0.3));
+    filter: brightness(0.7) drop-shadow(0 0 0.24rem rgba(240, 234, 110, 0.75))
+      drop-shadow(0 0 0.64rem rgba(240, 234, 110, 0.5))
+      drop-shadow(0 0 1.2rem rgba(240, 234, 110, 0.3));
   }
   50% {
-    filter: brightness(1.1) drop-shadow(0 0 0.25rem rgb(6, 26, 92))
-      drop-shadow(0 0 0.6rem rgba(7, 27, 94, 0.95))
-      drop-shadow(0 0 1.2rem rgba(4, 50, 110, 0.75))
-      drop-shadow(0 0 2.2rem rgba(8, 48, 96, 0.5))
-      drop-shadow(0 0 3.5rem rgba(6, 10, 116, 0.25));
+    filter: brightness(1.1) drop-shadow(0 0 0.2rem rgb(6, 26, 92))
+      drop-shadow(0 0 0.48rem rgba(7, 27, 94, 0.95))
+      drop-shadow(0 0 0.96rem rgba(4, 50, 110, 0.75))
+      drop-shadow(0 0 1.76rem rgba(8, 48, 96, 0.5))
+      drop-shadow(0 0 2.8rem rgba(6, 10, 116, 0.25));
   }
 }
-
 .home__footer {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  width: min(calc(100% - 2rem), 40rem);
+  gap: 0.8rem;
+  width: min(calc(100% - 1.6rem), 32rem);
   font-family: "Almarai", sans-serif;
-  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-size: clamp(0.8rem, 0.96vw, 1rem);
   font-weight: 400;
   color: white;
   text-align: center;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.16rem;
 }
-
 .home__legal-link {
   position: relative;
   border: 0;
@@ -161,14 +146,13 @@
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.16rem;
 }
-
 .home__legal-link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -0.45rem;
+  bottom: -0.36rem;
   width: 100%;
   height: 2px;
   background-color: #f5ed5c;
@@ -176,20 +160,17 @@
   transform-origin: center;
   transition: transform 0.3s ease;
 }
-
 .home__legal-link:hover::after,
 .home__legal-link:focus-visible::after {
   transform: scaleX(0.6);
 }
-
 @media (min-width: 62.5rem) {
   .home__play {
-    width: 13.75rem;
-    height: 5.45rem;
-    margin-top: 2rem;
+    width: 11rem;
+    height: 4.36rem;
+    margin-top: 1.6rem;
   }
 }
-
 @media (max-width: 37.5rem) {
   .home__heading {
     align-items: center;
