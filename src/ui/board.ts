@@ -274,9 +274,15 @@ function resolveCurrentTurn(
 ): void {
   const resolvedState = gameController.resolveTurn();
   if (resolvedState.status === "finished") {
-    showGameOver(resolvedState);
-    return;
-  }
+  showMatchedCards(
+    gameElement,
+    resolvedState,
+    gameController,
+    currentTurnCardIds,
+  );
+  showGameOver(resolvedState);
+  return;
+}
   if (areCurrentCardsMatched(resolvedState, currentTurnCardIds)) {
     showMatchedCards(
       gameElement,

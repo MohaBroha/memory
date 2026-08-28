@@ -69,8 +69,9 @@
   }
 }
 .home__play {
-  width: clamp(7.6rem, 12vw, 11rem);
+    width: clamp(7.6rem, 12vw, 11rem);
   height: clamp(4.36rem, 4.8vw, 4.48rem);
+  transition: transform 0.3s ease-out;
   border: 0;
   padding: 0;
   background-color: transparent;
@@ -79,10 +80,16 @@
   background-position: center;
   background-size: contain;
   cursor: pointer;
+  transform: translateY(0.3rem);
 }
 .home__play.is-hover {
   background-image: url("/assets/components/home/play-hover.svg");
 }
+
+.home__play:hover {
+  transform: translateY(-0.2rem) scale(1.05);
+}
+
 .home__controller {
   position: absolute;
   z-index: 1;
