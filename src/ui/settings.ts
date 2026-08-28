@@ -157,6 +157,7 @@ function createSummary(
     summaryElement,
     themeSeparator,
     playerSeparator,
+    state,
   );
   return summaryElement;
 }
@@ -190,19 +191,16 @@ function createStartButton(): HTMLButtonElement {
 }
 
 /** Adds the summary expansion toggle behavior. */
-function setupSummaryToggle(
-  summaryElement: HTMLElement,
-  themeSeparator: HTMLImageElement,
-  playerSeparator: HTMLImageElement,
-): void {
-  summaryElement.addEventListener("click", (event) => {
+function setupSummaryToggle(summaryElement: HTMLElement, themeSeparator: HTMLImageElement, 
+    playerSeparator: HTMLImageElement, state: ReturnType<typeof createSettingsState>): 
+    void {
+    summaryElement.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
-    const summaryItem = target.closest(".settings__summary-item");
-    if (!summaryItem) {
-      return;
-    }
-    const isOpen = summaryElement.classList.toggle("is-open");
-    const separatorSource = isOpen ? OPEN_SEPARATOR : DEFAULT_SEPARATOR;
+    if (!target.closest(".settings__summary-item")) return;
+    summaryElement.classList.toggle("is-open");
+    const allSelected = state.selectedTheme !== null &&
+      state.selectedPlayer !== null && state.selectedBoardSize !== null;
+    const separatorSource = allSelected ? OPEN_SEPARATOR : DEFAULT_SEPARATOR;
     themeSeparator.src = separatorSource;
     playerSeparator.src = separatorSource;
   });
@@ -219,11 +217,20 @@ function setupRadioInputs(
     'input[type="radio"]',
   );
   radioInputs.forEach((input) => {
-    input.addEventListener("change", () => {
-      updateSelectedSetting(input, state, themePreview);
-      updateStartButton(summaryElement, state);
-    });
+input.addEventListener("change", () => {
+  updateSelectedSetting(input, state, themePreview);
+  updateSummary(summaryElement, state);
+  updateStartButton(summaryElement, state);
+  updateSummarySeparators(summaryElement, state);
+});
   });
+}
+
+/** Updates the summary separators based on the current selection state. */
+function updateSummarySeparators(summaryElement: HTMLElement, state: ReturnType<typeof createSettingsState>): void {
+  const source = state.selectedTheme && state.selectedPlayer && state.selectedBoardSize
+    ? OPEN_SEPARATOR : DEFAULT_SEPARATOR;
+  summaryElement.querySelectorAll<HTMLImageElement>(".settings__summary-separator").forEach((separator) => separator.src = source);
 }
 
 /** Updates one selected setting from a radio input. */
@@ -242,6 +249,28 @@ function updateSelectedSetting(
   if (input.name === "board-size") {
     state.selectedBoardSize = input.value as BoardSize;
   }
+}
+
+function updateSummary(
+  summaryElement: HTMLElement,
+  state: ReturnType<typeof createSettingsState>,
+): void {
+  const summaryItems =
+    summaryElement.querySelectorAll<HTMLButtonElement>(
+      ".settings__summary-item",
+    );
+  if (summaryItems.length !== 3) {
+    return;
+  }
+  summaryItems[0].textContent = state.selectedTheme
+    ? getThemeLabel(state.selectedTheme).replace(" theme", "")
+    : "Game theme";
+  summaryItems[1].textContent = state.selectedPlayer
+    ? getPlayerLabel(state.selectedPlayer)
+    : "Player";
+  summaryItems[2].textContent = state.selectedBoardSize
+    ? getBoardSizeLabel(state.selectedBoardSize)
+    : "Board size";
 }
 
 /** Updates the theme preview image and alternative text. */
