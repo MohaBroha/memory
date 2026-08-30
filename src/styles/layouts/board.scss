@@ -162,6 +162,62 @@
     transform: none;
   }
 }
+
+.game__exit--da-project {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 10.75rem;
+  height: 3.375rem;
+  aspect-ratio: auto;
+  padding: 0.75rem 1.25rem;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0.625rem;
+  background: #bfe5f2;
+  background-image: none;
+  color: #1e7594;
+  font-family: "Figtree", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.game__exit--da-project .game__exit-icon {
+  display: block;
+  width: 1.875rem;
+  height: 1.875rem;
+  flex: 0 0 1.875rem;
+  object-fit: contain;
+}
+.game__exit--da-project .game__exit-icon.is-hover {
+  display: none;
+}
+.game__exit--da-project:hover {
+  background: #1e7594;
+    color: #ffffff;
+
+}
+.game__exit--da-project:hover .game__exit-icon.is-default {
+  display: none;
+}
+.game__exit--da-project:hover .game__exit-icon.is-hover {
+  display: block;
+}
+.game__exit--da-project .game__exit-label {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+
 @media (min-width: 48rem) {
   .game__header {
     grid-template-columns: auto 1fr auto;

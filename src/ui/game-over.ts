@@ -177,7 +177,7 @@ function createNewGameButton(
   newGameButton.setAttribute("aria-label", "Back to start");
  if (theme === "coding-vibes") {
   newGameButton.textContent = "Back to start";
-} else if (theme === "games") {
+} else if (theme === "games" || theme === "da-project") {
   newGameButton.textContent = "Home";
 } else if (gameOverAssets.homeButton) {
   newGameButton.style.backgroundImage = `url("${gameOverAssets.homeButton}")`;
