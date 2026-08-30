@@ -175,13 +175,17 @@ function createNewGameButton(
   newGameButton.type = "button";
   newGameButton.classList.add("game-over__new-game");
   newGameButton.setAttribute("aria-label", "Back to start");
- if (theme === "coding-vibes") {
-  newGameButton.textContent = "Back to start";
-} else if (theme === "games" || theme === "da-project") {
-  newGameButton.textContent = "Home";
-} else if (gameOverAssets.homeButton) {
-  newGameButton.style.backgroundImage = `url("${gameOverAssets.homeButton}")`;
-}
+  if (theme === "coding-vibes") {
+    newGameButton.textContent = "Back to start";
+  } else if (
+    theme === "games" ||
+    theme === "da-project" ||
+    theme === "food"
+  ) {
+    newGameButton.textContent = "Home";
+  } else if (gameOverAssets.homeButton) {
+    newGameButton.style.backgroundImage = `url("${gameOverAssets.homeButton}")`;
+  }
   newGameButton.addEventListener("click", () => {
     showView(createSettingsElement());
   });

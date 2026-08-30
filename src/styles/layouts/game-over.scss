@@ -506,17 +506,14 @@
   }
 }
 
-
 .game-over[data-theme="food"] {
   background-color: #f3832d;
   color: #ffffff;
   font-family: "Klee One", sans-serif;
-
   &.is-result {
     background-color: #f3e8d5;
     color: #a6530c;
   }
-
   .game-over__title {
     color: #f3e8d5;
     font-family: "Klee One", sans-serif;
@@ -524,14 +521,12 @@
     font-weight: 600;
     letter-spacing: 0.02em;
   }
-
   .game-over__score-label {
     color: #f3e8d5;
     font-family: "Klee One", sans-serif;
     font-size: clamp(1.25rem, 2.5vw, 2rem);
     font-weight: 400;
   }
-
   .game__score {
     display: flex;
     align-items: center;
@@ -543,7 +538,6 @@
     background-color: #ffffff;
     border-radius: 0.5rem;
   }
-
   .game__score-player {
     display: flex;
     align-items: center;
@@ -553,53 +547,83 @@
     font-size: clamp(1.1rem, 3vw, 2.5rem);
     font-weight: 600;
   }
-
   .game__score-icon {
     width: 2.5rem;
     height: 2.5rem;
     object-fit: contain;
   }
-
   .game__score-player--blue {
     color: #1598e8;
   }
-
   .game__score-player--orange {
     color: #ff7600;
   }
-
   .game-over__result-title {
-    color: #F3832D;
+    color: #f3832d;
     font-family: "Klee One", sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 400;
   }
-
   .game-over__winner-name {
     font-family: "Klee One", sans-serif;
     font-size: clamp(2rem, 4.5vw, 3.5rem);
     font-weight: 600;
   }
-
   .game-over__winner-name--blue {
     color: #a45212;
   }
-
   .game-over__winner-name--orange {
     color: #a45212;
   }
-
   .game-over__draw-name {
     color: #f3832d;
     font-family: "Klee One", sans-serif;
     font-size: clamp(3rem, 8vw, 7.5rem);
     font-weight: 600;
   }
-
   .game-over__winner-image,
   .game-over__draw-image {
     width: clamp(10rem, 24vw, 18rem);
   }
+  .game-over__new-game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.0625rem;
+    height: 2.8125rem;
+    margin-top: clamp(1.5rem, 5vw, 3rem);
+    padding: 0.75rem 1.25rem;
+    gap: 0.625rem;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 0.625rem;
+    background-color: #f3832d;
+    background-image: none;
+    color: #ffffff;
+    font-family: "Klee One", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100vh);
+    box-shadow: 0.1875rem 0.1875rem 0.3125rem #00000033;
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.45s ease-out,
+      opacity 0.45s ease-out;
+  }
+ &.is-result .game-over__new-game {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+&.is-result .game-over__new-game:hover {
+  transform: translateY(-0.3rem);
+}
 }
 
 .game-over__confetti {

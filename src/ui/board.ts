@@ -173,6 +173,20 @@ function createExitButton(
     exitLabel.textContent = "Exit game";
     exitButton.append(defaultIcon, hoverIcon, exitLabel);
     exitButton.classList.add("game__exit--da-project");
+  } else if (gameState.settings.theme === "food") {
+    const defaultIcon = document.createElement("img");
+    const hoverIcon = document.createElement("img");
+    const exitLabel = document.createElement("span");
+    defaultIcon.src = "/assets/components/food/icons/move_item (3)-default.svg";
+    defaultIcon.alt = "";
+    defaultIcon.classList.add("game__exit-icon", "is-default");
+    hoverIcon.src = "/assets/components/food/icons/move_item (4)hover.svg";
+    hoverIcon.alt = "";
+    hoverIcon.classList.add("game__exit-icon", "is-hover");
+    exitLabel.classList.add("game__exit-label");
+    exitLabel.textContent = "EXIT game";
+    exitButton.append(defaultIcon, hoverIcon, exitLabel);
+    exitButton.classList.add("game__exit--food");
   } else {
     exitButton.style.setProperty(
       "--exit-button-default",

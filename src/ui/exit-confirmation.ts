@@ -80,6 +80,8 @@ function createBackButton(
     backButton.textContent = "No, back to game";
   } else if (theme === "da-project") {
     backButton.textContent = "Back to game";
+  } else if (theme === "food") {
+    backButton.textContent = "NO, BACK TO GAME";
   } else {
     backButton.style.setProperty(
       "--popup-back-default",
@@ -110,6 +112,8 @@ function createExitButton(
     exitButton.textContent = "Yes, quit game";
   } else if (theme === "da-project") {
     exitButton.textContent = "Exit game";
+  } else if (theme === "food") {
+    exitButton.textContent = "EXIT GAME";
   } else {
     exitButton.style.setProperty(
       "--popup-exit-default",

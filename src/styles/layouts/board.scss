@@ -216,6 +216,67 @@
   line-height: inherit;
   white-space: nowrap;
 }
+.game__exit--food {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 10.8125rem;
+  height: 2.875rem;
+  aspect-ratio: auto;
+  padding: 0.75rem 1.25rem;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0.625rem;
+  background-color: #fff9f2;
+  background-image: url("/assets/components/food/icons/border.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: calc(100% + 0.125rem) calc(100% + 0.125rem);
+  color: #f3832d;
+  font-family: "Klee One", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.game__exit--food:hover {
+  background-color: #f3832d;
+  background-image: none;
+  box-shadow: 0.1875rem 0.1875rem 0.3125rem 0 #2f2e2e33;
+}
+.game__exit--food .game__exit-icon {
+  display: block;
+  width: 1.875rem;
+  height: 1.875rem;
+  flex: 0 0 1.875rem;
+  object-fit: contain;
+}
+.game__exit--food .game__exit-icon.is-hover {
+  display: none;
+}
+.game__exit--food:hover {
+  background: #f3832d;
+  color: #fff9f2;
+  box-shadow: 0.1875rem 0.1875rem 0.3125rem 0 #2f2e2e33;
+}
+.game__exit--food:hover .game__exit-icon.is-default {
+  display: none;
+}
+.game__exit--food:hover .game__exit-icon.is-hover {
+  display: block;
+}
+.game__exit--food .game__exit-label {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+}
 
 
 @media (min-width: 48rem) {
