@@ -8,6 +8,7 @@
   background-color: #2c2e2e;
   color: #ffffff;
 }
+
 .home__content {
   position: relative;
   z-index: 1;
@@ -19,6 +20,7 @@
   width: min(100%, 72rem);
   padding: 1.6rem;
 }
+
 .home__heading {
   display: flex;
   flex-direction: column;
@@ -27,6 +29,7 @@
   max-width: 100%;
   gap: clamp(0.8rem, 1.2vw, 1.2rem);
 }
+
 .home__subtitle {
   margin: 0;
   font-family: "Almarai", sans-serif;
@@ -34,6 +37,7 @@
   font-weight: 400;
   line-height: 1;
 }
+
 .home__title {
   margin: 0;
   max-width: 100%;
@@ -43,6 +47,7 @@
   line-height: 1;
   white-space: normal;
 }
+
 .home__brand {
   position: absolute;
   top: 1.2rem;
@@ -56,38 +61,93 @@
   white-space: nowrap;
   letter-spacing: 0.16rem;
 }
+
 .home__brand span {
   display: inline-block;
   opacity: 0;
   transform: translateX(-12px);
   animation: brand-letter-in 0.45s ease-out forwards;
 }
+
 @keyframes brand-letter-in {
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
+
 .home__play {
-    width: clamp(7.6rem, 12vw, 11rem);
-  height: clamp(4.36rem, 4.8vw, 4.48rem);
-  transition: transform 0.3s ease-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: clamp(12.5rem, 18vw, 16.5rem);
+  height: clamp(4.5rem, 6vw, 6.5rem);
+  margin: 0;
   border: 0;
-  padding: 0;
-  background-color: transparent;
-  background-image: url("/assets/components/home/play-default.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  padding: 0 2rem;
+  background-color: #f0ea6e;
+  color: #2c2e2e;
+  font-family: "Red Rose", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
   cursor: pointer;
-  transform: translateY(0.3rem);
+  overflow: visible;
+  transform: translateY(0) scaleX(1);
+  transform-origin: center;
+  transition: transform 0.25s ease;
 }
-.home__play.is-hover {
-  background-image: url("/assets/components/home/play-hover.svg");
+.home__play:hover {
+  transform: translateY(-2px) scaleX(1.08);
 }
 
-.home__play:hover {
-  transform: translateY(-0.2rem) scale(1.05);
+.home__play-label {
+  display: block;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.home__play-controller-wrapper,
+.home__play-arrow-wrapper {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+
+.home__play-controller-wrapper {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.home__play-arrow-wrapper {
+  width: 2rem;
+  height: 2rem;
+}
+
+.home__play-controller,
+.home__play-arrow {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home__play-controller.is-hover,
+.home__play-arrow.is-hover {
+  opacity: 0;
+}
+
+.home__play:hover .is-default {
+  opacity: 0;
+}
+
+.home__play:hover .is-hover {
+  opacity: 1;
 }
 
 .home__controller {
@@ -103,22 +163,26 @@
   cursor: pointer;
   animation: controller-neon 3.9s ease-in-out infinite;
 }
+
 .home__controller img {
   display: block;
   width: 100%;
   height: auto;
 }
+
 @keyframes controller-neon {
   0%,
   100% {
     filter: brightness(0.45) drop-shadow(0 0 0.16rem rgba(240, 234, 110, 0.35))
       drop-shadow(0 0 0.48rem rgba(240, 234, 110, 0.2));
   }
+
   35% {
     filter: brightness(0.7) drop-shadow(0 0 0.24rem rgba(240, 234, 110, 0.75))
       drop-shadow(0 0 0.64rem rgba(240, 234, 110, 0.5))
       drop-shadow(0 0 1.2rem rgba(240, 234, 110, 0.3));
   }
+
   50% {
     filter: brightness(1.1) drop-shadow(0 0 0.2rem rgb(6, 26, 92))
       drop-shadow(0 0 0.48rem rgba(7, 27, 94, 0.95))
@@ -127,6 +191,7 @@
       drop-shadow(0 0 2.8rem rgba(6, 10, 116, 0.25));
   }
 }
+
 .home__footer {
   position: absolute;
   bottom: 1.2rem;
@@ -144,6 +209,7 @@
   text-align: center;
   letter-spacing: 0.16rem;
 }
+
 .home__legal-link {
   position: relative;
   border: 0;
@@ -155,6 +221,7 @@
   cursor: pointer;
   letter-spacing: 0.16rem;
 }
+
 .home__legal-link::after {
   content: "";
   position: absolute;
@@ -167,17 +234,21 @@
   transform-origin: center;
   transition: transform 0.3s ease;
 }
+
 .home__legal-link:hover::after,
 .home__legal-link:focus-visible::after {
   transform: scaleX(0.6);
 }
+
+
 @media (min-width: 62.5rem) {
   .home__play {
-    width: 11rem;
-    height: 4.36rem;
+    width: 14.5rem;
+    height: 5.6rem;
     margin-top: 1.6rem;
   }
 }
+
 @media (max-width: 37.5rem) {
   .home__heading {
     align-items: center;

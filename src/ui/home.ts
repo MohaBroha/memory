@@ -6,12 +6,10 @@ import { createControllerElement } from "./controller";
 /** Creates the complete home view. */
 export function createHomeElement(): HTMLElement {
   const homeElement = createHomeContainer();
-  const brandElement = createBrandElement();
   const contentElement = createHomeContent();
   const controllerElement = createControllerElement();
   const footerElement = createHomeFooter();
   homeElement.append(
-    brandElement,
     contentElement,
     controllerElement,
     footerElement,
@@ -25,20 +23,6 @@ function createHomeContainer(): HTMLElement {
   homeElement.id = "home";
   homeElement.classList.add("home");
   return homeElement;
-}
-
-/** Creates the animated Memory brand element. */
-function createBrandElement(): HTMLSpanElement {
-  const brandElement = document.createElement("span");
-  const brandText = "Memory";
-  brandElement.classList.add("home__brand");
-  [...brandText].forEach((letter, index) => {
-    const letterElement = document.createElement("span");
-    letterElement.textContent = letter;
-    letterElement.style.animationDelay = `${index * 0.12}s`;
-    brandElement.append(letterElement);
-  });
-  return brandElement;
 }
 
 /** Creates the home heading and play action. */
@@ -78,18 +62,66 @@ function createHomeFooter(): HTMLElement {
 
 /** Creates the button that opens the settings view. */
 function createPlayButton(): HTMLButtonElement {
-  const playButton = document.createElement("button");
-  playButton.type = "button";
-  playButton.classList.add("home__play");
-  playButton.setAttribute("aria-label", "Play");
-  playButton.addEventListener("mouseenter", () => {
-    playButton.classList.add("is-hover");
-  });
-  playButton.addEventListener("mouseleave", () => {
-    playButton.classList.remove("is-hover");
-  });
-  playButton.addEventListener("click", () => {
-    showView(createSettingsElement());
-  });
-  return playButton;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.classList.add("home__play");
+  button.setAttribute("aria-label", "Play");
+  button.append(
+    createPlayControllerIcons(),
+    createPlayLabel(),
+    createPlayArrowIcons(),
+  );
+  button.addEventListener("click", () => showView(createSettingsElement()));
+  return button;
+}
+
+/** Creates the default and hover controller icons. */
+function createPlayControllerIcons(): HTMLElement {
+  const container = document.createElement("span");
+  container.classList.add("home__play-controller-wrapper");
+  container.append(
+    createPlayIcon(
+      "/assets/components/home/icons/stadia_controller-default.svg",
+      "home__play-controller is-default",
+    ),
+    createPlayIcon(
+      "/assets/components/home/icons/stadia_controller (1).svg",
+      "home__play-controller is-hover",
+    ),
+  );
+  return container;
+}
+
+/** Creates the default and hover arrow icons. */
+function createPlayArrowIcons(): HTMLElement {
+  const container = document.createElement("span");
+  container.classList.add("home__play-arrow-wrapper");
+  container.append(
+    createPlayIcon(
+      "/assets/components/home/icons/Arrow 1-default.svg",
+      "home__play-arrow is-default",
+    ),
+    createPlayIcon(
+      "/assets/components/home/icons/Arrow 1 (1).svg",
+      "home__play-arrow is-hover",
+    ),
+  );
+  return container;
+}
+
+/** Creates a play button icon. */
+function createPlayIcon(src: string, className: string): HTMLImageElement {
+  const icon = document.createElement("img");
+  icon.src = src;
+  icon.alt = "";
+  icon.className = className;
+  return icon;
+}
+
+/** Creates the play button label. */
+function createPlayLabel(): HTMLSpanElement {
+  const label = document.createElement("span");
+  label.classList.add("home__play-label");
+  label.textContent = "Play";
+  return label;
 }

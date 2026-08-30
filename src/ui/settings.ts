@@ -183,10 +183,18 @@ function createSeparator(): HTMLImageElement {
 /** Creates the disabled settings start button. */
 function createStartButton(): HTMLButtonElement {
   const startButton = document.createElement("button");
+  const icon = document.createElement("img");
+  const label = document.createElement("span");
   startButton.type = "button";
   startButton.classList.add("settings__start");
-  startButton.textContent = "Start";
   startButton.disabled = true;
+  icon.src =
+    "/assets/components/settings/icons/smart_display-default.svg";
+  icon.alt = "";
+  icon.classList.add("settings__start-icon");
+  label.classList.add("settings__start-label");
+  label.textContent = "Start";
+  startButton.append(icon, label);
   return startButton;
 }
 
