@@ -10,12 +10,9 @@ import type {
   GameSettings,
 } from "../types/settings.types";
 
-const THEME_PREVIEW_PATH =
-  "/assets/components/settings/theme-visual/";
-const DEFAULT_SEPARATOR =
-  "/assets/components/settings/separator-default.svg";
-const OPEN_SEPARATOR =
-  "/assets/components/settings/separator-final.svg";
+const THEME_PREVIEW_PATH = "/assets/components/settings/theme-visual/";
+const DEFAULT_SEPARATOR = "/assets/components/settings/separator-default.svg";
+const OPEN_SEPARATOR = "/assets/components/settings/separator-final.svg";
 
 /** Creates the settings view and wires its controls. */
 export function createSettingsElement(): HTMLElement {
@@ -46,9 +43,8 @@ function setupSettingsStart(
   summaryElement: HTMLElement,
   state: ReturnType<typeof createSettingsState>,
 ): void {
-  const startButton = summaryElement.querySelector<HTMLButtonElement>(
-    ".settings__start",
-  );
+  const startButton =
+    summaryElement.querySelector<HTMLButtonElement>(".settings__start");
   if (startButton) {
     setupStartButton(startButton, state);
   }
@@ -101,9 +97,7 @@ function setupThemePreview(
   const themeOptions =
     themeGroup.querySelectorAll<HTMLLabelElement>(".settings__option");
   themeOptions.forEach((option) => {
-    const input = option.querySelector<HTMLInputElement>(
-      'input[name="theme"]',
-    );
+    const input = option.querySelector<HTMLInputElement>('input[name="theme"]');
     if (!input) {
       return;
     }
@@ -153,12 +147,7 @@ function createSummary(
     boardSizeSummary,
     startButton,
   );
-  setupSummaryToggle(
-    summaryElement,
-    themeSeparator,
-    playerSeparator,
-    state,
-  );
+  setupSummaryToggle(summaryElement, themeSeparator, playerSeparator, state);
   return summaryElement;
 }
 
@@ -188,8 +177,7 @@ function createStartButton(): HTMLButtonElement {
   startButton.type = "button";
   startButton.classList.add("settings__start");
   startButton.disabled = true;
-  icon.src =
-    "/assets/components/settings/icons/smart_display-default.svg";
+  icon.src = "/assets/components/settings/icons/smart_display-default.svg";
   icon.alt = "";
   icon.classList.add("settings__start-icon");
   label.classList.add("settings__start-label");
@@ -199,15 +187,20 @@ function createStartButton(): HTMLButtonElement {
 }
 
 /** Adds the summary expansion toggle behavior. */
-function setupSummaryToggle(summaryElement: HTMLElement, themeSeparator: HTMLImageElement, 
-    playerSeparator: HTMLImageElement, state: ReturnType<typeof createSettingsState>): 
-    void {
-    summaryElement.addEventListener("click", (event) => {
+function setupSummaryToggle(
+  summaryElement: HTMLElement,
+  themeSeparator: HTMLImageElement,
+  playerSeparator: HTMLImageElement,
+  state: ReturnType<typeof createSettingsState>,
+): void {
+  summaryElement.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
     if (!target.closest(".settings__summary-item")) return;
     summaryElement.classList.toggle("is-open");
-    const allSelected = state.selectedTheme !== null &&
-      state.selectedPlayer !== null && state.selectedBoardSize !== null;
+    const allSelected =
+      state.selectedTheme !== null &&
+      state.selectedPlayer !== null &&
+      state.selectedBoardSize !== null;
     const separatorSource = allSelected ? OPEN_SEPARATOR : DEFAULT_SEPARATOR;
     themeSeparator.src = separatorSource;
     playerSeparator.src = separatorSource;
@@ -225,20 +218,27 @@ function setupRadioInputs(
     'input[type="radio"]',
   );
   radioInputs.forEach((input) => {
-input.addEventListener("change", () => {
-  updateSelectedSetting(input, state, themePreview);
-  updateSummary(summaryElement, state);
-  updateStartButton(summaryElement, state);
-  updateSummarySeparators(summaryElement, state);
-});
+    input.addEventListener("change", () => {
+      updateSelectedSetting(input, state, themePreview);
+      updateSummary(summaryElement, state);
+      updateStartButton(summaryElement, state);
+      updateSummarySeparators(summaryElement, state);
+    });
   });
 }
 
 /** Updates the summary separators based on the current selection state. */
-function updateSummarySeparators(summaryElement: HTMLElement, state: ReturnType<typeof createSettingsState>): void {
-  const source = state.selectedTheme && state.selectedPlayer && state.selectedBoardSize
-    ? OPEN_SEPARATOR : DEFAULT_SEPARATOR;
-  summaryElement.querySelectorAll<HTMLImageElement>(".settings__summary-separator").forEach((separator) => separator.src = source);
+function updateSummarySeparators(
+  summaryElement: HTMLElement,
+  state: ReturnType<typeof createSettingsState>,
+): void {
+  const source =
+    state.selectedTheme && state.selectedPlayer && state.selectedBoardSize
+      ? OPEN_SEPARATOR
+      : DEFAULT_SEPARATOR;
+  summaryElement
+    .querySelectorAll<HTMLImageElement>(".settings__summary-separator")
+    .forEach((separator) => (separator.src = source));
 }
 
 /** Updates one selected setting from a radio input. */
@@ -263,10 +263,9 @@ function updateSummary(
   summaryElement: HTMLElement,
   state: ReturnType<typeof createSettingsState>,
 ): void {
-  const summaryItems =
-    summaryElement.querySelectorAll<HTMLButtonElement>(
-      ".settings__summary-item",
-    );
+  const summaryItems = summaryElement.querySelectorAll<HTMLButtonElement>(
+    ".settings__summary-item",
+  );
   if (summaryItems.length !== 3) {
     return;
   }
@@ -295,9 +294,8 @@ function updateStartButton(
   summaryElement: HTMLElement,
   state: ReturnType<typeof createSettingsState>,
 ): void {
-  const startButton = summaryElement.querySelector<HTMLButtonElement>(
-    ".settings__start",
-  );
+  const startButton =
+    summaryElement.querySelector<HTMLButtonElement>(".settings__start");
   if (startButton) {
     startButton.disabled = !hasCompleteSettings(state);
   }
@@ -364,10 +362,7 @@ function createThemeOption(theme: Theme): HTMLElement {
   const input = document.createElement("input");
   const text = document.createElement("span");
   const indicator = createRadioIndicator();
-  label.classList.add(
-    "settings__option",
-    "settings__theme-option",
-  );
+  label.classList.add("settings__option", "settings__theme-option");
   input.type = "radio";
   input.name = "theme";
   input.value = theme;
@@ -420,10 +415,7 @@ function createOptionGroup(
 }
 
 /** Creates a fieldset legend with an icon and title. */
-function createGroupLegend(
-  iconSrc: string,
-  title: string,
-): HTMLLegendElement {
+function createGroupLegend(iconSrc: string, title: string): HTMLLegendElement {
   const legend = document.createElement("legend");
   const icon = document.createElement("img");
   const text = document.createElement("span");

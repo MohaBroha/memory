@@ -53,11 +53,7 @@ function createCards(assets: CardAsset[]): Card[] {
 }
 
 /** Creates one card instance for a card asset and pair position. */
-function createCard(
-  asset: CardAsset,
-  index: number,
-  suffix: "a" | "b",
-): Card {
+function createCard(asset: CardAsset, index: number, suffix: "a" | "b"): Card {
   return {
     id: `${asset.pairId}-${index}-${suffix}`,
     pairId: asset.pairId,

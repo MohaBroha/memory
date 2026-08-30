@@ -9,10 +9,7 @@ const CARD_BACK_ASSETS: Record<Theme, string> = {
 };
 
 /** Creates the DOM element for a card and applies its current state classes. */
-export function createCardElement(
-  card: Card,
-  theme: Theme,
-): HTMLButtonElement {
+export function createCardElement(card: Card, theme: Theme): HTMLButtonElement {
   const cardElement = document.createElement("button");
   cardElement.type = "button";
   cardElement.classList.add("card");
@@ -50,10 +47,7 @@ function createCardFace(
 }
 
 /** Applies flipped and matched state classes to a card element. */
-function setCardState(
-  cardElement: HTMLButtonElement,
-  card: Card,
-): void {
+function setCardState(cardElement: HTMLButtonElement, card: Card): void {
   if (card.isFlipped || card.isMatched) {
     cardElement.classList.add("is-flipped");
   }

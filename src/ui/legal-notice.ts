@@ -29,9 +29,7 @@ function createLegalNoticeContent(): HTMLDivElement {
   const contentElement = document.createElement("div");
   contentElement.classList.add("legal-notice__content");
   contentElement.append(
-    createParagraph(
-      "Information pursuant to applicable law",
-    ),
+    createParagraph("Information pursuant to applicable law"),
     createHeading("Responsible for this website"),
     createParagraph("Mohamed Brohani - Email: mohabroha@mail.de"),
     createParagraph(
@@ -89,7 +87,6 @@ function createBackButton(): HTMLButtonElement {
 function createFooterElement(): HTMLElement {
   const footerElement = document.createElement("footer");
   footerElement.classList.add("legal-notice__footer");
-  footerElement.textContent =
-    "© All rights reserved 2026 Mohamed Brohani";
+  footerElement.textContent = "© All rights reserved 2026 Mohamed Brohani";
   return footerElement;
 }

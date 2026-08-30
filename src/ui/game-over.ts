@@ -13,10 +13,7 @@ export function createGameOverElement(gameState: GameState): HTMLElement {
   const gameOverElement = createGameOverContainer(gameState);
   const scoreWrapper = createScoreWrapper(gameState);
   const resultElement = createResultElement();
-  gameOverElement.append(
-    scoreWrapper,
-    resultElement,
-  );
+  gameOverElement.append(scoreWrapper, resultElement);
   scheduleGameOverResult(
     gameOverElement,
     resultElement,
@@ -177,11 +174,7 @@ function createNewGameButton(
   newGameButton.setAttribute("aria-label", "Back to start");
   if (theme === "coding-vibes") {
     newGameButton.textContent = "Back to start";
-  } else if (
-    theme === "games" ||
-    theme === "da-project" ||
-    theme === "food"
-  ) {
+  } else if (theme === "games" || theme === "da-project" || theme === "food") {
     newGameButton.textContent = "Home";
   } else if (gameOverAssets.homeButton) {
     newGameButton.style.backgroundImage = `url("${gameOverAssets.homeButton}")`;
@@ -233,9 +226,6 @@ function createPlayerScore(
   playerIcon.alt = "";
   const playerName = player === "blue" ? "Blue" : "Orange";
   const scoreText = showName ? `${playerName} ${points}` : `${points}`;
-  playerElement.append(
-    playerIcon,
-    document.createTextNode(scoreText),
-  );
+  playerElement.append(playerIcon, document.createTextNode(scoreText));
   return playerElement;
 }

@@ -9,11 +9,7 @@ export function createHomeElement(): HTMLElement {
   const contentElement = createHomeContent();
   const controllerElement = createControllerElement();
   const footerElement = createHomeFooter();
-  homeElement.append(
-    contentElement,
-    controllerElement,
-    footerElement,
-  );
+  homeElement.append(contentElement, controllerElement, footerElement);
   return homeElement;
 }
 
@@ -48,8 +44,7 @@ function createHomeFooter(): HTMLElement {
   const copyrightElement = document.createElement("span");
   const legalLink = document.createElement("button");
   footerElement.classList.add("home__footer");
-  copyrightElement.textContent =
-    "© All rights reserved 2026 Mohamed Brohani";
+  copyrightElement.textContent = "© All rights reserved 2026 Mohamed Brohani";
   legalLink.type = "button";
   legalLink.classList.add("home__legal-link");
   legalLink.textContent = "Legal Notice";

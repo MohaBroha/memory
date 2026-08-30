@@ -60,7 +60,7 @@ function createGameHeader(
 /** Creates the score display for both players. */
 function createScoreElement(
   gameState: GameState,
-  themeAssets: typeof THEME_ASSETS[Theme],
+  themeAssets: (typeof THEME_ASSETS)[Theme],
 ): HTMLElement {
   const scoreElement = document.createElement("div");
   scoreElement.classList.add("game__score");
@@ -110,7 +110,7 @@ function createPlayerScore(
 /** Creates the current-player indicator. */
 function createCurrentPlayerElement(
   gameState: GameState,
-  themeAssets: typeof THEME_ASSETS[Theme],
+  themeAssets: (typeof THEME_ASSETS)[Theme],
 ): HTMLElement {
   const currentPlayerElement = document.createElement("span");
   currentPlayerElement.classList.add("game__current-player");
@@ -130,84 +130,105 @@ function createCurrentPlayerElement(
 function createExitButton(
   gameState: GameState,
   gameElement: HTMLElement,
-  themeAssets: typeof THEME_ASSETS[Theme],
+  themeAssets: (typeof THEME_ASSETS)[Theme],
 ): HTMLButtonElement {
-  const exitButton = document.createElement("button");
-  exitButton.type = "button";
-  exitButton.classList.add("game__exit");
-  if (gameState.settings.theme === "coding-vibes") {
-    const exitIcon = document.createElement("img");
-    const exitLabel = document.createElement("span");
-    exitIcon.src = "/assets/components/coding-vibes/icons/move_item.svg";
-    exitIcon.alt = "";
-    exitIcon.classList.add("game__exit-icon");
-    exitLabel.classList.add("game__exit-label");
-    exitLabel.textContent = "Exit game";
-    exitButton.append(exitIcon, exitLabel);
-    exitButton.classList.add("game__exit--coding-vibes");
-  } else if (gameState.settings.theme === "games") {
-    const defaultIcon = document.createElement("img");
-    const hoverIcon = document.createElement("img");
-    const exitLabel = document.createElement("span");
-    defaultIcon.src = "/assets/components/games/icons/move_item (1)-default.svg";
-    defaultIcon.alt = "";
-    defaultIcon.classList.add("game__exit-icon", "is-default");
-    hoverIcon.src = "/assets/components/games/icons/move_item-hover.svg";
-    hoverIcon.alt = "";
-    hoverIcon.classList.add("game__exit-icon", "is-hover");
-    exitLabel.classList.add("game__exit-label");
-    exitLabel.textContent = "Exit game";
-    exitButton.append(defaultIcon, hoverIcon, exitLabel);
-    exitButton.classList.add("game__exit--games");
-  } else if (gameState.settings.theme === "da-project") {
-    const defaultIcon = document.createElement("img");
-    const hoverIcon = document.createElement("img");
-    const exitLabel = document.createElement("span");
-    defaultIcon.src = "/assets/components/da-project/icons/move_item (1)-default.svg";
-    defaultIcon.alt = "";
-    defaultIcon.classList.add("game__exit-icon", "is-default");
-    hoverIcon.src = "/assets/components/da-project/icons/move_item (2)-hover.svg";
-    hoverIcon.alt = "";
-    hoverIcon.classList.add("game__exit-icon", "is-hover");
-    exitLabel.classList.add("game__exit-label");
-    exitLabel.textContent = "Exit game";
-    exitButton.append(defaultIcon, hoverIcon, exitLabel);
-    exitButton.classList.add("game__exit--da-project");
-  } else if (gameState.settings.theme === "food") {
-    const defaultIcon = document.createElement("img");
-    const hoverIcon = document.createElement("img");
-    const exitLabel = document.createElement("span");
-    defaultIcon.src = "/assets/components/food/icons/move_item (3)-default.svg";
-    defaultIcon.alt = "";
-    defaultIcon.classList.add("game__exit-icon", "is-default");
-    hoverIcon.src = "/assets/components/food/icons/move_item (4)hover.svg";
-    hoverIcon.alt = "";
-    hoverIcon.classList.add("game__exit-icon", "is-hover");
-    exitLabel.classList.add("game__exit-label");
-    exitLabel.textContent = "EXIT game";
-    exitButton.append(defaultIcon, hoverIcon, exitLabel);
-    exitButton.classList.add("game__exit--food");
+  const button = document.createElement("button");
+  const theme = gameState.settings.theme;
+  button.type = "button";
+  button.classList.add("game__exit");
+  if (theme === "coding-vibes") {
+    setupCodingVibesExit(button);
+  } else if (theme === "games" || theme === "da-project" || theme === "food") {
+    setupThemedExit(button, theme);
   } else {
-    exitButton.style.setProperty(
-      "--exit-button-default",
-      `url("${themeAssets.exitButton.default}")`,
-    );
-    exitButton.style.setProperty(
-      "--exit-button-hover",
-      `url("${themeAssets.exitButton.hover}")`,
-    );
+    setExitAssets(button, themeAssets);
   }
-  exitButton.addEventListener("click", () => {
-    handleExitClick(gameState, gameElement);
-  });
-  return exitButton;
+  button.addEventListener("click", () => handleExitClick(gameState, gameElement));
+  return button;
+}
+
+/** Sets the default and hover assets for the exit button. */
+function setExitAssets(
+  button: HTMLButtonElement,
+  themeAssets: (typeof THEME_ASSETS)[Theme],
+): void {
+  button.style.setProperty(
+    "--exit-button-default",
+    `url("${themeAssets.exitButton.default}")`,
+  );
+  button.style.setProperty(
+    "--exit-button-hover",
+    `url("${themeAssets.exitButton.hover}")`,
+  );
+}
+
+/** Creates the Coding Vibes exit button content. */
+function setupCodingVibesExit(button: HTMLButtonElement): void {
+  const icon = document.createElement("img");
+  const label = document.createElement("span");
+  icon.src = "/assets/components/coding-vibes/icons/move_item.svg";
+  icon.alt = "";
+  icon.classList.add("game__exit-icon");
+  label.classList.add("game__exit-label");
+  label.textContent = "Exit game";
+  button.append(icon, label);
+  button.classList.add("game__exit--coding-vibes");
+}
+
+const THEMED_EXIT_CONFIG = {
+  games: {
+    default: "/assets/components/games/icons/move_item (1)-default.svg",
+    hover: "/assets/components/games/icons/move_item-hover.svg",
+    label: "Exit game",
+  },
+  "da-project": {
+    default: "/assets/components/da-project/icons/move_item (1)-default.svg",
+    hover: "/assets/components/da-project/icons/move_item (2)-hover.svg",
+    label: "Exit game",
+  },
+  food: {
+    default: "/assets/components/food/icons/move_item (3)-default.svg",
+    hover: "/assets/components/food/icons/move_item (4)hover.svg",
+    label: "EXIT game",
+  },
+} as const;
+
+/** Creates the exit button content for themed buttons. */
+function setupThemedExit(
+  button: HTMLButtonElement,
+  theme: keyof typeof THEMED_EXIT_CONFIG,
+): void {
+  const config = THEMED_EXIT_CONFIG[theme];
+  button.append(
+    createExitIcon(config.default, "is-default"),
+    createExitIcon(config.hover, "is-hover"),
+    createExitLabel(config.label),
+  );
+  button.classList.add(`game__exit--${theme}`);
+}
+
+/** Creates the exit button label. */
+function createExitLabel(text: string): HTMLSpanElement {
+  const label = document.createElement("span");
+  label.classList.add("game__exit-label");
+  label.textContent = text;
+  return label;
+}
+
+/** Creates an exit button icon with its visibility state. */
+function createExitIcon(
+  src: string,
+  state: "is-default" | "is-hover",
+): HTMLImageElement {
+  const icon = document.createElement("img");
+  icon.src = src;
+  icon.alt = "";
+  icon.classList.add("game__exit-icon", state);
+  return icon;
 }
 
 /** Shows the exit confirmation dialog for the current game. */
-function handleExitClick(
-  gameState: GameState,
-  gameElement: HTMLElement,
-): void {
+function handleExitClick(gameState: GameState, gameElement: HTMLElement): void {
   const confirmationElement = createExitConfirmationElement(
     () => {
       confirmationElement.remove();
@@ -360,9 +381,7 @@ function areCurrentCardsMatched(
   cardIds: string[],
 ): boolean {
   return cardIds.every((cardId) => {
-    const card = gameState.cards.find(
-      (gameCard) => gameCard.id === cardId,
-    );
+    const card = gameState.cards.find((gameCard) => gameCard.id === cardId);
     return card?.isMatched;
   });
 }

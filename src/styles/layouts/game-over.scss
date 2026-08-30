@@ -454,7 +454,7 @@
   }
 
   .game-over__draw-name {
-    color:  #FD5B4F;
+    color: #fd5b4f;
     font-family: "Figtree", sans-serif;
     font-size: clamp(3rem, 8vw, 7.5rem);
     font-weight: 700;
@@ -494,11 +494,13 @@
       transform 0.45s ease-out,
       opacity 0.45s ease-out;
   }
+
   &.is-result .game-over__new-game {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
+
   &.is-result .game-over__new-game:hover {
     background-color: #1e7594;
     color: #ffffff;
@@ -616,14 +618,14 @@
       transform 0.45s ease-out,
       opacity 0.45s ease-out;
   }
- &.is-result .game-over__new-game {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-&.is-result .game-over__new-game:hover {
-  transform: translateY(-0.3rem);
-}
+  &.is-result .game-over__new-game {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  &.is-result .game-over__new-game:hover {
+    transform: translateY(-0.3rem);
+  }
 }
 
 .game-over__confetti {
@@ -641,6 +643,7 @@
   user-select: none;
   animation: confetti-fall 1.2s ease-out both;
 }
+
 .game-over__result-title,
 .game-over__winner-name,
 .game-over__winner-image,

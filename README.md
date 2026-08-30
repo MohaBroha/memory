@@ -379,15 +379,15 @@ The application uses TypeScript together with the native DOM API to create dynam
 UI elements are created using methods such as:
 
 ```ts
-document.createElement()
+document.createElement();
 ```
 
 and configured through:
 
 ```ts
-classList.add()
-textContent
-append()
+classList.add();
+textContent;
+append();
 ```
 
 This approach allows dynamic game data, scores, themes and assets to be connected directly to the UI while keeping styling in separate SCSS files.
