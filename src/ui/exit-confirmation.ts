@@ -9,7 +9,7 @@ export function createExitConfirmationElement(
 ): HTMLElement {
   const themeAssets = THEME_ASSETS[theme];
   const overlayElement = createOverlay(theme);
-  const dialogElement = createDialog(themeAssets, onBack, onExit);
+  const dialogElement = createDialog(theme, themeAssets, onBack, onExit);
   overlayElement.appendChild(dialogElement);
   addOverlayClickHandler(overlayElement, onBack);
   return overlayElement;
@@ -20,18 +20,22 @@ function createOverlay(theme: Theme): HTMLDivElement {
   const overlayElement = document.createElement("div");
   overlayElement.classList.add("exit-confirmation");
   overlayElement.dataset.theme = theme;
+  if (theme === "coding-vibes") {
+    overlayElement.classList.add("exit-confirmation--coding-vibes");
+  }
   return overlayElement;
 }
 
 /** Creates the confirmation dialog and its actions. */
 function createDialog(
+  theme: Theme,
   themeAssets: typeof THEME_ASSETS[Theme],
   onBack: () => void,
   onExit: () => void,
 ): HTMLDivElement {
   const dialogElement = document.createElement("div");
   const titleElement = createDialogTitle();
-  const actionsElement = createDialogActions(themeAssets, onBack, onExit);
+  const actionsElement = createDialogActions(theme, themeAssets, onBack, onExit);
   dialogElement.classList.add("exit-confirmation__dialog");
   dialogElement.append(titleElement, actionsElement);
   return dialogElement;
@@ -47,13 +51,14 @@ function createDialogTitle(): HTMLHeadingElement {
 
 /** Creates the dialog action buttons. */
 function createDialogActions(
+  theme: Theme,
   themeAssets: typeof THEME_ASSETS[Theme],
   onBack: () => void,
   onExit: () => void,
 ): HTMLDivElement {
   const actionsElement = document.createElement("div");
-  const backButton = createBackButton(themeAssets, onBack);
-  const exitButton = createExitButton(themeAssets, onExit);
+  const backButton = createBackButton(theme, themeAssets, onBack);
+  const exitButton = createExitButton(theme, themeAssets, onExit);
   actionsElement.classList.add("exit-confirmation__actions");
   actionsElement.append(backButton, exitButton);
   return actionsElement;
@@ -61,6 +66,7 @@ function createDialogActions(
 
 /** Creates the button that dismisses the confirmation dialog. */
 function createBackButton(
+  theme: Theme,
   themeAssets: typeof THEME_ASSETS[Theme],
   onBack: () => void,
 ): HTMLButtonElement {
@@ -68,20 +74,25 @@ function createBackButton(
   backButton.type = "button";
   backButton.classList.add("exit-confirmation__back");
   backButton.setAttribute("aria-label", "Back to game");
-  backButton.style.setProperty(
-    "--popup-back-default",
-    `url("${themeAssets.popupButton.backDefault}")`,
-  );
-  backButton.style.setProperty(
-    "--popup-back-hover",
-    `url("${themeAssets.popupButton.backHover}")`,
-  );
+  if (theme === "coding-vibes") {
+    backButton.textContent = "Back to game";
+  } else {
+    backButton.style.setProperty(
+      "--popup-back-default",
+      `url("${themeAssets.popupButton.backDefault}")`,
+    );
+    backButton.style.setProperty(
+      "--popup-back-hover",
+      `url("${themeAssets.popupButton.backHover}")`,
+    );
+  }
   backButton.addEventListener("click", onBack);
   return backButton;
 }
 
 /** Creates the button that exits the game. */
 function createExitButton(
+  theme: Theme,
   themeAssets: typeof THEME_ASSETS[Theme],
   onExit: () => void,
 ): HTMLButtonElement {
@@ -89,15 +100,19 @@ function createExitButton(
   exitButton.type = "button";
   exitButton.classList.add("exit-confirmation__exit");
   exitButton.setAttribute("aria-label", "Exit game");
-  exitButton.style.setProperty(
-    "--popup-exit-default",
-    `url("${themeAssets.popupButton.exitDefault}")`,
-  );
-  if (themeAssets.popupButton.exitHover) {
+  if (theme === "coding-vibes") {
+    exitButton.textContent = "Exit game";
+  } else {
     exitButton.style.setProperty(
-      "--popup-exit-hover",
-      `url("${themeAssets.popupButton.exitHover}")`,
+      "--popup-exit-default",
+      `url("${themeAssets.popupButton.exitDefault}")`,
     );
+    if (themeAssets.popupButton.exitHover) {
+      exitButton.style.setProperty(
+        "--popup-exit-hover",
+        `url("${themeAssets.popupButton.exitHover}")`,
+      );
+    }
   }
   exitButton.addEventListener("click", onExit);
   return exitButton;

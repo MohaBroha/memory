@@ -6,7 +6,7 @@ import { createHomeElement } from "./home";
 import { showView } from "./view";
 import { THEME_ASSETS } from "../data/theme-assets.data";
 import { createGameOverElement } from "./game-over";
-import type { BoardSize, Theme } from "../types/settings.types";
+import type { Theme } from "../types/settings.types";
 import { createControllerElement } from "./controller";
 
 /** Creates the game board view for a game controller. */
@@ -135,14 +135,26 @@ function createExitButton(
   const exitButton = document.createElement("button");
   exitButton.type = "button";
   exitButton.classList.add("game__exit");
-  exitButton.style.setProperty(
-    "--exit-button-default",
-    `url("${themeAssets.exitButton.default}")`,
-  );
-  exitButton.style.setProperty(
-    "--exit-button-hover",
-    `url("${themeAssets.exitButton.hover}")`,
-  );
+  if (gameState.settings.theme === "coding-vibes") {
+    const exitIcon = document.createElement("img");
+    const exitLabel = document.createElement("span");
+    exitIcon.src = "/assets/components/coding-vibes/icons/move_item.svg";
+    exitIcon.alt = "";
+    exitIcon.classList.add("game__exit-icon");
+    exitLabel.classList.add("game__exit-label");
+    exitLabel.textContent = "Exit game";
+    exitButton.append(exitIcon, exitLabel);
+    exitButton.classList.add("game__exit--coding-vibes");
+  } else {
+    exitButton.style.setProperty(
+      "--exit-button-default",
+      `url("${themeAssets.exitButton.default}")`,
+    );
+    exitButton.style.setProperty(
+      "--exit-button-hover",
+      `url("${themeAssets.exitButton.hover}")`,
+    );
+  }
   exitButton.addEventListener("click", () => {
     handleExitClick(gameState, gameElement);
   });
@@ -274,15 +286,15 @@ function resolveCurrentTurn(
 ): void {
   const resolvedState = gameController.resolveTurn();
   if (resolvedState.status === "finished") {
-  showMatchedCards(
-    gameElement,
-    resolvedState,
-    gameController,
-    currentTurnCardIds,
-  );
-  showGameOver(resolvedState);
-  return;
-}
+    showMatchedCards(
+      gameElement,
+      resolvedState,
+      gameController,
+      currentTurnCardIds,
+    );
+    showGameOver(resolvedState);
+    return;
+  }
   if (areCurrentCardsMatched(resolvedState, currentTurnCardIds)) {
     showMatchedCards(
       gameElement,

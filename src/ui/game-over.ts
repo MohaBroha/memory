@@ -4,6 +4,7 @@ import { THEME_ASSETS } from "../data/theme-assets.data";
 import { getWinner } from "../game/score";
 import { createSettingsElement } from "./settings";
 import { showView } from "./view";
+import type { Theme } from "../types/settings.types";
 
 const RESULT_DELAY = 2500;
 /** Creates the Game Over view for the completed game state. */
@@ -12,11 +13,9 @@ export function createGameOverElement(gameState: GameState): HTMLElement {
   const gameOverElement = createGameOverContainer(gameState);
   const scoreWrapper = createScoreWrapper(gameState);
   const resultElement = createResultElement();
-  const newGameButton = createNewGameButton(themeAssets.gameOver);
   gameOverElement.append(
     scoreWrapper,
     resultElement,
-    newGameButton,
   );
   scheduleGameOverResult(
     gameOverElement,
@@ -85,9 +84,14 @@ function showResult(
   resultContainer.replaceChildren();
   if (winner === null) {
     createDrawResult(resultContainer, gameOverAssets.draw);
-    return;
+  } else {
+    createWinnerResult(resultContainer, winner, gameOverAssets);
   }
-  createWinnerResult(resultContainer, winner, gameOverAssets);
+  const newGameButton = createNewGameButton(
+    gameOverAssets,
+    gameState.settings.theme,
+  );
+  resultContainer.appendChild(newGameButton);
 }
 
 /** Adds the confetti effect to the Game Over view. */
@@ -165,12 +169,15 @@ function createDrawResult(
 /** Creates the button that starts a new game. */
 function createNewGameButton(
   gameOverAssets: GameOverAssets,
+  theme: Theme,
 ): HTMLButtonElement {
   const newGameButton = document.createElement("button");
   newGameButton.type = "button";
   newGameButton.classList.add("game-over__new-game");
   newGameButton.setAttribute("aria-label", "Back to start");
-  if (gameOverAssets.homeButton) {
+  if (theme === "coding-vibes") {
+    newGameButton.textContent = "Back to start";
+  } else if (gameOverAssets.homeButton) {
     newGameButton.style.backgroundImage = `url("${gameOverAssets.homeButton}")`;
   }
   newGameButton.addEventListener("click", () => {

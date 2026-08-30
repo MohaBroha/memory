@@ -7,29 +7,25 @@
   justify-content: center;
   padding: 0.8rem;
   background: rgba(44, 46, 46, 0.35);
-
   &__dialog {
-    width: min(100%, 34rem);
-    padding: 1.5rem 2rem 1.25rem;
+    width: min(100%, 32rem);
+    padding: 1.5rem 2rem 3rem;
     background-color: #ffffff;
     border-radius: 1.2rem;
     text-align: center;
     box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.2);
     animation: popup-slide-in 0.45s ease-out both;
   }
-
   @keyframes popup-slide-in {
     from {
       transform: translateY(-100vh);
       opacity: 0;
     }
-
     to {
       transform: translateY(0);
       opacity: 1;
     }
   }
-
   &__title {
     margin: 0 auto;
     max-width: 27rem;
@@ -39,21 +35,19 @@
     font-weight: 700;
     line-height: 1.25;
   }
-
   &__actions {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 2rem;
     margin-top: 1.5rem;
   }
-
   &__back,
   &__exit {
     flex: 0 1 12rem;
     width: 12rem;
     aspect-ratio: 148 / 57;
-    border: 1px solid transparent;
+    border: 0.0625rem solid transparent;
     box-sizing: border-box;
     padding: 0;
     background-color: transparent;
@@ -65,91 +59,157 @@
       transform 0.25s ease,
       border-color 0.25s ease;
   }
-
   &__exit {
     order: 2;
     background-image: var(--popup-exit-default);
-
     &:hover {
-      transform: translateY(1.6px);
-      filter: drop-shadow(0 0 0.032rem rgb(102, 207, 188))
-        drop-shadow(0 0 0.064rem rgb(102, 207, 188));
+    filter: drop-shadow(0 0 0.125rem rgb(145, 234, 217))
     }
   }
-
   &__back {
     order: 1;
     background-image: var(--popup-back-default);
-
     &:hover {
       background-image: var(--popup-back-hover);
-      transform: translateY(-1.6px);
     }
   }
-
   &__back:focus-visible,
   &__exit:focus-visible {
-    outline: 2px solid #29aef5;
+    outline: 0.125rem solid #29aef5;
     outline-offset: 0.2rem;
   }
+
+}
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__title {
+  color: #2c2e2e;
+  font-family: "Red Rose", sans-serif;
+  font-weight: 700;
+}
+
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__back,
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__exit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  aspect-ratio: auto;
+  box-sizing: border-box;
+  background-image: none;
+  color: #ffffff;
+  font-family: "Red Rose", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__back {
+  width: 11.375rem;
+  height: 3.5625rem;
+  padding: 1rem 1.5rem;
+  border: 0.1875rem solid transparent;
+  background-color: #66cfbc;
+}
+
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__back:hover {
+  border-color: #3abca4;
+  background-color: #66cfbcb2;
+  box-shadow: 0.25rem 0.25rem 0.375rem #4dd5bc33;
+    transform: translateY(-0.0625rem);
+
+}
+
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__exit {
+  width: 11.25rem;
+  height: 3.5625rem;
+  padding: 1rem 1.5rem;
+  border: 0.125rem solid #4dd5bc;
+  background-color: #86e9d624;
+  color: #4dd5bc;
+}
+
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__exit:hover {
+  border: 0.1875rem solid #4dd5bc;
+  color: #4dd5bc;
+    transform: translateY(0.0625rem);
+}
+
+.exit-confirmation[data-theme="games"] .exit-confirmation__title {
+  color: #294f60;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+}
+
+.exit-confirmation[data-theme="da-project"] .exit-confirmation__title {
+  color: #141415;
+  font-family: "Figtree", sans-serif;
+  font-weight: 700;
+}
+
+.exit-confirmation[data-theme="food"] .exit-confirmation__title {
+  color: #a6530c;
+  font-family: "Klee One", sans-serif;
+  font-weight: 600;
 }
 
 @media (max-width: 40rem) {
   .exit-confirmation {
-    padding: 0.75rem;
-
+    padding: clamp(0.5rem, 3vw, 0.75rem);
     &__dialog {
-      width: min(100%, 22rem);
-      padding: 1.25rem 1rem 1rem;
-      border-radius: 1rem;
+      padding: clamp(1rem, 4vw, 1.25rem) clamp(0.75rem, 5vw, 4rem) clamp(1rem, 4vw, 1.3rem);
+      border-radius: clamp(0.8rem, 3vw, 1rem);
     }
-
     &__title {
-      max-width: 100%;
-      font-size: clamp(1.15rem, 5vw, 1.5rem);
+      font-size: clamp(1rem, 4.5vw, 1.5rem);
       line-height: 1.25;
     }
-
     &__actions {
-      margin-top: 1.25rem;
+      margin-top: clamp(1rem, 4vw, 1.45rem);
+      gap: clamp(0.5rem, 2.5vw, 0.625rem);
     }
-
     &__back,
     &__exit {
-      flex: 1 1 0;
       width: auto;
       min-width: 0;
     }
   }
+  .exit-confirmation--coding-vibes .exit-confirmation__actions {
+    gap: clamp(0.5rem, 2.5vw, 0.5rem);
+  }
+ .exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__exit {
+  width: 10.35rem;
+  height: 3.5625rem;
+  padding: 1rem 1.5rem;
+  border: 0.125rem solid #4dd5bc;
+  background-color: #86e9d624;
+  color: #4dd5bc;
 }
-
-.exit-confirmation[data-theme="coding-vibes"] {
-  .exit-confirmation__title {
-    color: #2c2e2e;
-    font-family: "Red Rose", sans-serif;
+.exit-confirmation[data-theme="coding-vibes"] .exit-confirmation__exit:hover {
+  width: 10.35rem;
+  height: 3.5625rem;
+  border: 0.1875rem solid #4dd5bc;
+  background-color: #86e9d642;
+  color: #4dd5bc;
+  box-shadow: 0.25rem 0.25rem 0.375rem #4dd5bc33;
+  transform: translateY(0.0625rem);
+}
+  .exit-confirmation--coding-vibes .exit-confirmation__back:hover {
+    width: auto;
+  }
+  .exit-confirmation--coding-vibes .exit-confirmation__exit:hover {
+    width: auto;
   }
 }
 
-.exit-confirmation[data-theme="games"] {
-  .exit-confirmation__title {
-    color: #294f60;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 700;
-  }
-}
-
-.exit-confirmation[data-theme="da-project"] {
-  .exit-confirmation__title {
-    color: #141415;
-    font-family: "Figtree", sans-serif;
-    font-weight: 700;
-  }
-}
-
-.exit-confirmation[data-theme="food"] {
-  .exit-confirmation__title {
-    color: #a6530c;
-    font-family: "Klee One", sans-serif;
-    font-weight: 600;
+@media (max-width: 24rem) {
+  .exit-confirmation--coding-vibes .exit-confirmation__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 0.625rem);
   }
 }
