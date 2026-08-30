@@ -74,9 +74,11 @@ function createBackButton(
   backButton.type = "button";
   backButton.classList.add("exit-confirmation__back");
   backButton.setAttribute("aria-label", "Back to game");
-  if (theme === "coding-vibes") {
-    backButton.textContent = "Back to game";
-  } else {
+ if (theme === "coding-vibes") {
+  backButton.textContent = "Back to game";
+} else if (theme === "games") {
+  backButton.textContent = "No, back to game";
+} else {
     backButton.style.setProperty(
       "--popup-back-default",
       `url("${themeAssets.popupButton.backDefault}")`,
@@ -100,9 +102,11 @@ function createExitButton(
   exitButton.type = "button";
   exitButton.classList.add("exit-confirmation__exit");
   exitButton.setAttribute("aria-label", "Exit game");
-  if (theme === "coding-vibes") {
-    exitButton.textContent = "Exit game";
-  } else {
+ if (theme === "coding-vibes") {
+  exitButton.textContent = "Exit game";
+} else if (theme === "games") {
+  exitButton.textContent = "Yes, quit game";
+} else {
     exitButton.style.setProperty(
       "--popup-exit-default",
       `url("${themeAssets.popupButton.exitDefault}")`,

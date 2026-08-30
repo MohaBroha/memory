@@ -145,6 +145,20 @@ function createExitButton(
     exitLabel.textContent = "Exit game";
     exitButton.append(exitIcon, exitLabel);
     exitButton.classList.add("game__exit--coding-vibes");
+  } else if (gameState.settings.theme === "games") {
+    const defaultIcon = document.createElement("img");
+    const hoverIcon = document.createElement("img");
+    const exitLabel = document.createElement("span");
+    defaultIcon.src = "/assets/components/games/icons/move_item (1)-default.svg";
+    defaultIcon.alt = "";
+    defaultIcon.classList.add("game__exit-icon", "is-default");
+    hoverIcon.src = "/assets/components/games/icons/move_item-hover.svg";
+    hoverIcon.alt = "";
+    hoverIcon.classList.add("game__exit-icon", "is-hover");
+    exitLabel.classList.add("game__exit-label");
+    exitLabel.textContent = "Exit game";
+    exitButton.append(defaultIcon, hoverIcon, exitLabel);
+    exitButton.classList.add("game__exit--games");
   } else {
     exitButton.style.setProperty(
       "--exit-button-default",

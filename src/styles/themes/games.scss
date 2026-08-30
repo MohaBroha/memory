@@ -58,10 +58,84 @@
     color: #ffffff;
     text-align: right;
   }
+.game__exit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 12.1875rem;
+  height: 3.375rem;
+  padding: 0.75rem 1.25rem;
+  box-sizing: border-box;
+  border: 0.125rem solid #e71c4f;
+  border-radius: 0.625rem;
+  background-color: #ed1b7614;
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.game__exit-icon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.game__exit-icon.is-hover {
+  display: none;
+}
+.game__exit:hover .game__exit-icon.is-default {
+  display: none;
+}
+.game__exit:hover .game__exit-icon.is-hover {
+  display: block;
+}
+.game__exit:hover {
+  border-color: #e71c4f;
+  box-shadow:
+    0 0 0 0.0625rem #e71c4f,
+    0.125rem -0.125rem 0.25rem #e71c4f80,
+    0.25rem -0.25rem 0.5rem #e71c4f40;
+  transform: translate(0.0625rem, -0.0625rem);
+}
+}
 
-  .game__exit {
-    width: 195px;
-    height: 54px;
-    aspect-ratio: auto;
-  }
+.game-over[data-theme="games"] .game-over__new-game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.6875rem;
+  height: 3.0625rem;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  padding: 0.75rem 1.25rem;
+  gap: 0.625rem;
+  box-sizing: border-box;
+  border: 0.125rem solid #e71c4f;
+  border-radius: 0.625rem;
+  background-color: #ed1b7614;
+  background-image: none;
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border 0.2s ease,
+    transform 0.2s ease;
+}
+
+.game-over[data-theme="games"].is-result .game-over__new-game:hover {
+  border: 0.1875rem solid #e71c4f;
+  transform: translate(0.125rem, 0.125rem);
 }
