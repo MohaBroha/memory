@@ -369,7 +369,7 @@
   }
 
   .field[data-card-count="36"] {
-    width: min(100%, 45rem);
+    width: min(100%, 50rem);
   }
 
   .game__exit--coding-vibes {
@@ -387,14 +387,14 @@
 
 @media (min-width: 100rem) {
   .field[data-card-count="16"] {
-    width: min(100%, 40rem);
+    width: min(100%, 45rem);
   }
 
   .field[data-card-count="24"] {
-    width: min(100%, 55rem);
+    width: min(100%, 65rem);
   }
 
   .field[data-card-count="36"] {
-    width: min(100%, 62rem);
+    width: min(100%, 72rem);
   }
 }
