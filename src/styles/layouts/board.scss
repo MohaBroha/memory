@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .game__header {
   display: grid;
   grid-template-columns: 1fr;
@@ -13,6 +14,7 @@
   margin: 0 auto 1.6rem;
   flex-shrink: 0;
 }
+
 .game__current-player {
   display: flex;
   align-items: center;
@@ -22,6 +24,7 @@
   font-size: clamp(0.8rem, 1.2vw, 1.08rem);
   white-space: nowrap;
 }
+
 .game__exit {
   justify-self: center;
   width: clamp(7.2rem, 9.6vw, 8.4rem);
@@ -35,12 +38,15 @@
   background-size: contain;
   cursor: pointer;
 }
+
 .game__exit:hover {
   background-image: var(--exit-button-hover);
 }
+
 .game__exit-icon {
   display: block;
 }
+
 .game__exit--coding-vibes {
   display: flex;
   align-items: center;
@@ -65,12 +71,13 @@
     border 0s,
     box-shadow 0s;
 }
+
 .game__exit--coding-vibes:hover {
   border: 0.1875rem solid #4dd5bc;
   background: #86e9d642;
-  background-image: none;
   box-shadow: 0.25rem 0.25rem 0.375rem #4dd5bc33;
 }
+
 .game__exit--coding-vibes .game__exit-icon {
   display: block;
   width: 1.875rem;
@@ -78,6 +85,7 @@
   flex: 0 0 1.875rem;
   object-fit: contain;
 }
+
 .game__exit--coding-vibes .game__exit-label {
   display: block;
   margin: 0;
@@ -88,33 +96,64 @@
   line-height: inherit;
   white-space: nowrap;
 }
+
 .field {
   display: grid;
-  width: min(100%, 33rem);
-  flex: 1;
-  min-height: 0;
+  width: min(100%, 36rem);
   margin: 0 auto;
   gap: 0.4rem;
 }
+
 .field[data-card-count="16"] {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-content: center;
-  width: min(100%, 28rem);
+  width: min(100%, 32rem);
 }
+
 .field[data-card-count="24"] {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-content: center;
-  width: min(100%, 40rem);
+  width: min(100%, 44rem);
 }
+
 .field[data-card-count="36"] {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-content: start;
-  width: min(100%, 33rem);
+  width: min(100%, 36rem);
 }
+
 .board__controller {
   display: none;
 }
+
 @media (max-width: 27.99rem) {
+  .field[data-card-count="16"],
+  .field[data-card-count="24"],
+  .field[data-card-count="36"] {
+    width: 100%;
+    gap: 0.4rem;
+  }
+
+  .field[data-card-count="16"],
+  .field[data-card-count="24"],
+  .field[data-card-count="36"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .field[data-card-count="16"] {
+    align-content: start;
+  }
+
+  .field[data-card-count="24"] {
+    align-content: start;
+  }
+
+  .field[data-card-count="36"] {
+    width: 100%;
+    align-content: start;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+
   .game__exit--coding-vibes {
     width: clamp(9.5rem, 58vw, 12.9375rem);
     height: clamp(3.2rem, 18vw, 3.875rem);
@@ -122,43 +161,16 @@
     gap: clamp(0.4rem, 2.5vw, 0.625rem);
     font-size: clamp(1rem, 5vw, 1.25rem);
   }
+
   .game__exit--coding-vibes .game__exit-icon {
     width: clamp(1.4rem, 7vw, 1.875rem);
     height: clamp(1.4rem, 7vw, 1.875rem);
     flex-basis: clamp(1.4rem, 7vw, 1.875rem);
   }
+
   .game__exit--coding-vibes:hover {
     width: clamp(9.5rem, 58vw, 12.9375rem);
     height: clamp(3.2rem, 18vw, 3.875rem);
-    transform: none;
-  }
-}
-@media (min-width: 28rem) and (max-width: 47.99rem) {
-  .game {
-    padding: 1.6rem 0.8rem 0.8rem;
-  }
-  .game__current-player {
-    justify-self: center;
-    font-size: clamp(0.8rem, 2.4vw, 1rem);
-  }
-  .game__exit {
-    width: clamp(6.4rem, 16vw, 8rem);
-  }
-  .game__exit--coding-vibes {
-    width: clamp(10.5rem, 32vw, 12.9375rem);
-    height: clamp(3.2rem, 8vw, 3.875rem);
-    padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
-    gap: clamp(0.5rem, 1.5vw, 0.625rem);
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-  }
-  .game__exit--coding-vibes .game__exit-icon {
-    width: clamp(1.5rem, 4vw, 1.875rem);
-    height: clamp(1.5rem, 4vw, 1.875rem);
-    flex-basis: clamp(1.5rem, 4vw, 1.875rem);
-  }
-  .game__exit--coding-vibes:hover {
-    width: clamp(10.5rem, 32vw, 12.9375rem);
-    height: clamp(3.2rem, 8vw, 3.875rem);
     transform: none;
   }
 }
@@ -185,6 +197,7 @@
   white-space: nowrap;
   cursor: pointer;
 }
+
 .game__exit--da-project .game__exit-icon {
   display: block;
   width: 1.875rem;
@@ -192,19 +205,24 @@
   flex: 0 0 1.875rem;
   object-fit: contain;
 }
+
 .game__exit--da-project .game__exit-icon.is-hover {
   display: none;
 }
+
 .game__exit--da-project:hover {
   background: #1e7594;
   color: #ffffff;
 }
+
 .game__exit--da-project:hover .game__exit-icon.is-default {
   display: none;
 }
+
 .game__exit--da-project:hover .game__exit-icon.is-hover {
   display: block;
 }
+
 .game__exit--da-project .game__exit-label {
   display: block;
   margin: 0;
@@ -215,6 +233,7 @@
   line-height: inherit;
   white-space: nowrap;
 }
+
 .game__exit--food {
   display: flex;
   align-items: center;
@@ -240,11 +259,13 @@
   white-space: nowrap;
   cursor: pointer;
 }
+
 .game__exit--food:hover {
   background-color: #f3832d;
   background-image: none;
   box-shadow: 0.1875rem 0.1875rem 0.3125rem 0 #2f2e2e33;
 }
+
 .game__exit--food .game__exit-icon {
   display: block;
   width: 1.875rem;
@@ -252,20 +273,25 @@
   flex: 0 0 1.875rem;
   object-fit: contain;
 }
+
 .game__exit--food .game__exit-icon.is-hover {
   display: none;
 }
+
 .game__exit--food:hover {
   background: #f3832d;
   color: #fff9f2;
   box-shadow: 0.1875rem 0.1875rem 0.3125rem 0 #2f2e2e33;
 }
+
 .game__exit--food:hover .game__exit-icon.is-default {
   display: none;
 }
+
 .game__exit--food:hover .game__exit-icon.is-hover {
   display: block;
 }
+
 .game__exit--food .game__exit-label {
   display: block;
   margin: 0;
@@ -284,35 +310,74 @@
     width: min(100%, 64rem);
     margin-bottom: 0.5rem;
   }
+
   .game__exit {
     justify-self: end;
   }
+
+  .field[data-card-count="16"] {
+    width: min(100%, 36rem);
+  }
+
+  .field[data-card-count="24"] {
+    width: min(100%, 48rem);
+  }
+
+  .field[data-card-count="36"] {
+    width: min(100%, 40rem);
+  }
+
   .game__exit--coding-vibes {
     width: 12.9375rem;
     height: 3.875rem;
   }
+
   .game__exit--coding-vibes:hover {
     width: 12.9375rem;
     height: 3.875rem;
     transform: none;
   }
 }
+
 @media (min-width: 62.5rem) {
   .board__controller {
     display: block;
   }
 }
+
 @media (min-width: 28rem) and (max-width: 47.99rem) {
+  .field[data-card-count="16"] {
+    width: min(100%, 32rem);
+  }
+
+  .field[data-card-count="24"] {
+    width: min(100%, 44rem);
+  }
+
   .field[data-card-count="36"] {
-    width: min(100%, 28rem);
+    width: min(100%, 36rem);
   }
 }
+
 @media (min-width: 70rem) {
+  .field[data-card-count="16"] {
+    width: min(100%, 33rem);
+  }
+
+  .field[data-card-count="24"] {
+    width: min(100%, 34rem);
+  }
+
+  .field[data-card-count="36"] {
+    width: min(100%, 33rem);
+  }
+
   .game__exit--coding-vibes {
     width: 12.9375rem;
     height: 3.875rem;
     font-size: 1.25rem;
   }
+
   .game__exit--coding-vibes:hover {
     width: 12.9375rem;
     height: 3.875rem;

@@ -84,7 +84,7 @@
   gap: 0.85rem;
   width: clamp(12.5rem, 18vw, 16.5rem);
   height: clamp(4.5rem, 6vw, 6.5rem);
-  margin: 0;
+  margin: 0.5rem;
   border: 0;
   padding: 0 2rem;
   background-color: #f0ea6e;
@@ -100,6 +100,7 @@
   transform-origin: center;
   transition: transform 0.25s ease;
 }
+
 .home__play:hover {
   transform: translateY(-2px) scaleX(1.08);
 }
@@ -137,18 +138,30 @@
   object-fit: contain;
 }
 
-.home__play-controller.is-hover,
+.home__play-controller {
+  transform: translateY(0);
+  transform-origin: center;
+  transition:
+    transform 0.2s ease-in-out,
+    filter 0.2s ease-in-out;
+}
+
+.home__play:hover .home__play-controller {
+  transform: rotate(-40deg) translate(0.1rem, -0.1rem);
+}
+
 .home__play-arrow.is-hover {
   opacity: 0;
 }
 
-.home__play:hover .is-default {
+.home__play:hover .home__play-arrow.is-default {
   opacity: 0;
 }
 
-.home__play:hover .is-hover {
+.home__play:hover .home__play-arrow.is-hover {
   opacity: 1;
 }
+
 
 .home__controller {
   position: absolute;

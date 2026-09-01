@@ -61,27 +61,23 @@ function createPlayButton(): HTMLButtonElement {
   button.type = "button";
   button.classList.add("home__play");
   button.setAttribute("aria-label", "Play");
-  button.append(
-    createPlayControllerIcons(),
-    createPlayLabel(),
-    createPlayArrowIcons(),
-  );
+button.append(
+  createPlayControllerIcon(),
+  createPlayLabel(),
+  createPlayArrowIcons(),
+);
   button.addEventListener("click", () => showView(createSettingsElement()));
   return button;
 }
 
-/** Creates the default and hover controller icons. */
-function createPlayControllerIcons(): HTMLElement {
+/** Creates the play button controller icon. */
+function createPlayControllerIcon(): HTMLElement {
   const container = document.createElement("span");
   container.classList.add("home__play-controller-wrapper");
-  container.append(
+  container.appendChild(
     createPlayIcon(
       "/assets/components/home/icons/stadia_controller-default.svg",
-      "home__play-controller is-default",
-    ),
-    createPlayIcon(
-      "/assets/components/home/icons/stadia_controller (1).svg",
-      "home__play-controller is-hover",
+      "home__play-controller",
     ),
   );
   return container;
